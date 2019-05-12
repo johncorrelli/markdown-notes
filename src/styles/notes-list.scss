@@ -1,0 +1,47 @@
+@import 'variables.scss';
+
+.notes-list {
+    background-color: $background-color-dark;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    width: $left-width;
+
+    .note-preview {
+        cursor: pointer;
+        padding: 10px;
+
+        &:hover {
+            background: $text-color;
+            color: $background-color-dark;
+        }
+
+        .note-title {
+            font-weight: bold;
+        }
+
+        .note-category {
+            font-size: 0.7em;
+            font-weight: lighter;
+        }
+    }
+
+    .create-note {
+        background: $button-background-color;
+        border: none;
+        color: $button-text-color;
+        cursor: pointer;
+        display: block;
+        font-size: 1em;
+        font-weight: bold;
+        padding: 10px 0;
+        text-align: center;
+        width: 100%;
+
+        &:hover {
+            background: mix(#000000, $button-background-color, 20);
+        }
+    }
+}
