@@ -23,9 +23,9 @@ const Note = ({note, onSave}: Props) => {
     useEffect(
         () => {
             if (note) {
-                setTitle(note.title || '');
-                setCategory(note.category || '');
-                setValue(note.value || '');
+                setTitle(note.title);
+                setCategory(note.category);
+                setValue(note.value);
             }
         },
         [note]
