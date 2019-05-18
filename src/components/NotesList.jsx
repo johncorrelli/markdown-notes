@@ -1,13 +1,15 @@
+// @flow
 import React from 'react';
 import NotePreview from './NotePreview';
 import '../styles/notes-list.scss';
 
-const NotesList = (props) => {
-    const {notes} = props;
-    const onClick = (id) => {
-        props.onClick(id);
-    }
+type Props = {
+    notes: Array<Object>,
+    onClick: (id: string) => void,
+    onCreateNote: () => void,
+}
 
+const NotesList = ({notes, onClick, onCreateNote}: Props) => {
     notes.sort((a, b) => {
         const aTitle = a.title.toLowerCase();
         const bTitle = b.title.toLowerCase();
@@ -24,7 +26,7 @@ const NotesList = (props) => {
         <div className="notes-list">
             <input
                 className="create-note"
-                onClick={props.onCreateNote}
+                onClick={onCreateNote}
                 type="button"
                 value="Create Note"
             />
@@ -33,7 +35,7 @@ const NotesList = (props) => {
                 <NotePreview
                     key={note.id}
                     note={note}
-                    onClick={onClick}
+                    onClick={() => onClick(note.id)}
                 />
             ))}
         </div>
