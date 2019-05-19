@@ -1,11 +1,20 @@
+// @flow
 import React, {useEffect, useState} from 'react';
 import MarkdownRenderer from 'react-markdown-renderer';
 import '../styles/note.scss';
 import 'github-markdown-css';
 
-const Note = (props) => {
-    const {note, onSave} = props;
+type Props = {
+    note: {
+        id: string,
+        title: string,
+        category: string,
+        value: string
+    },
+    onSave: (note: Object) => void
+}
 
+const Note = ({note, onSave}: Props) => {
     const id = note && note.id;
     const [title, setTitle] = useState(null);
     const [category, setCategory] = useState(null);
@@ -13,13 +22,13 @@ const Note = (props) => {
 
     useEffect(
         () => {
-            if (props.note) {
-                setTitle(props.note.title || '');
-                setCategory(props.note.category || '');
-                setValue(props.note.value || '');
+            if (note) {
+                setTitle(note.title);
+                setCategory(note.category);
+                setValue(note.value);
             }
         },
-        [props.note]
+        [note]
     );
 
     const saveNote = () => {

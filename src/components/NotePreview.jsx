@@ -1,11 +1,17 @@
+// @flow
 import React from 'react';
 
-const NotePreview = (props) => {
-    const {note} = props;
-    const onClick = () => {
-        props.onClick(note.id);
-    }
+type Props = {
+    note: {
+        id: string,
+        title: string,
+        category: string,
+        value: string
+    },
+    onClick: (id: string) => void,
+}
 
+const NotePreview = ({note, onClick}: Props) => {
     if (!note.title) {
         return null;
     }
@@ -14,7 +20,7 @@ const NotePreview = (props) => {
         <div
             className='note-preview'
             id={note.id}
-            onClick={onClick}
+            onClick={() => onClick(note.id)}
         >
             <div className='note-title'>{note.title}</div>
             <div className='note-category'>{note.category}</div>
