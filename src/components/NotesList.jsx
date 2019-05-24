@@ -7,9 +7,10 @@ type Props = {
     notes: Array<Object>,
     onClick: (id: string) => void,
     onCreateNote: () => void,
+    selectedNoteId: String,
 }
 
-const NotesList = ({notes, onClick, onCreateNote}: Props) => {
+const NotesList = ({notes, onClick, onCreateNote, selectedNoteId}: Props) => {
     notes.sort((a, b) => {
         const aTitle = a.title.toLowerCase();
         const bTitle = b.title.toLowerCase();
@@ -36,6 +37,7 @@ const NotesList = ({notes, onClick, onCreateNote}: Props) => {
                     key={note.id}
                     note={note}
                     onClick={() => onClick(note.id)}
+                    isSelected={selectedNoteId === note.id}
                 />
             ))}
         </div>

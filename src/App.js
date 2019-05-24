@@ -45,6 +45,7 @@ function App() {
         notes={allNotes}
         onClick={onSelectNote}
         onCreateNote={onCreateNote}
+        selectedNoteId={selectedNote && selectedNote.id}
       />
       <Note
         note={selectedNote}

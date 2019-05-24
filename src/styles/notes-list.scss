@@ -13,7 +13,7 @@
         cursor: pointer;
         padding: 10px;
 
-        &:hover {
+        &:hover, &.selected {
             background: $text-color;
             color: $background-color-dark;
         }
