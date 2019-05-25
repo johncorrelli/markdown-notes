@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import classNames from 'classnames/bind';
 
 type Props = {
     note: {
@@ -9,16 +10,22 @@ type Props = {
         value: string
     },
     onClick: (id: string) => void,
+    isSelected: Boolean,
 }
 
-const NotePreview = ({note, onClick}: Props) => {
+const NotePreview = ({note, onClick, isSelected}: Props) => {
     if (!note.title) {
         return null;
     }
 
+    const noteClass = classNames({
+        'note-preview': true,
+        selected: isSelected
+    });
+
     return (
         <div
-            className='note-preview'
+            className={noteClass}
             id={note.id}
             onClick={() => onClick(note.id)}
         >
