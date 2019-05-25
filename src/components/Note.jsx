@@ -57,7 +57,7 @@ const Note = ({note, onSave}: Props) => {
                     Title:<br />
                     <Input
                         name="value"
-                        keyListeners={['meta+s']}
+                        keyListeners={['enter', 'meta+s']}
                         onChange={(value) => setTitle(value)}
                         onSave={saveNote}
                         value={title}
@@ -67,7 +67,7 @@ const Note = ({note, onSave}: Props) => {
                     Category:<br />
                     <Input
                         name="value"
-                        keyListeners={['meta+s']}
+                        keyListeners={['enter', 'meta+s']}
                         onChange={(value) => setCategory(value)}
                         onSave={saveNote}
                         value={category}
@@ -77,7 +77,7 @@ const Note = ({note, onSave}: Props) => {
                     Note:<br />
                     <Input
                         name="value"
-                        keyListeners={['meta+s']}
+                        keyListeners={['enter', 'meta+s']}
                         onChange={(value) => setValue(value)}
                         onSave={saveNote}
                         tagName="textarea"
