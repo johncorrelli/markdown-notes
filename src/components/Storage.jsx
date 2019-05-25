@@ -1,37 +1,37 @@
 import uuidv4 from 'uuid/v4';
 
 class Storage {
-    constructor(store) {
-        this.storage = store;
+  constructor(store) {
+    this.storage = store;
+  }
+
+  getAllNotes = () => {
+    const values = [];
+    const keys = Object.keys(this.storage);
+
+    for (var id in keys) {
+      values.push(this.getNote(keys[id]));
     }
 
-    getAllNotes = () => {
-        const values = [];
-        const keys = Object.keys(this.storage);
+    return values;
+  };
 
-        for (var id in keys) {
-            values.push(this.getNote(keys[id]));
-        }
+  getNote = id => {
+    return JSON.parse(this.storage.getItem(id)) || {};
+  };
 
-        return values;
-    }
+  saveNote = note => {
+    const newNote = {
+      id: note.id || uuidv4(),
+      title: note.title || 'Untitled Note',
+      category: note.category || null,
+      value: note.value || null,
+    };
 
-    getNote = id => {
-        return JSON.parse(this.storage.getItem(id)) || {};
-    }
+    this.storage.setItem(newNote.id, JSON.stringify(newNote));
 
-    saveNote = (note) => {
-        const newNote = {
-            id: note.id || uuidv4(),
-            title: note.title || 'Untitled Note',
-            category: note.category || null,
-            value: note.value || null
-        };
-
-        this.storage.setItem(newNote.id, JSON.stringify(newNote));
-
-        return newNote;
-    }
+    return newNote;
+  };
 }
 
-export default Storage = new Storage(window.localStorage);
+export default (Storage = new Storage(window.localStorage));
