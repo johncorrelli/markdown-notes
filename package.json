@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "flow": "flow"
+    "flow": "flow",
+    "prettier": "prettier --config .prettierrc.js --write 'src/**/*.{js,jsx}'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prettier": "1.17.1"
   }
 }
