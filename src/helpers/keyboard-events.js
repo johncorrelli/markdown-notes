@@ -1,4 +1,4 @@
-import { KEY_B, KEY_S, KEY_TAB, KEY_ENTER, KEY_RETURN } from "keycode-js";
+import { KEY_B, KEY_I, KEY_S, KEY_TAB, KEY_ENTER, KEY_RETURN } from "keycode-js";
 
 const TAB = '    ';
 
@@ -16,6 +16,15 @@ export const handleKeyDown = (keyboardEvent, keyListeners, onChange, onSave) => 
     if (isKeyComboTracked('meta+b', keyListeners) && isKeyComboPressed('meta+b', keyboardEvent)) {
         const {newValue, selectionPosition} =
             wrapSelectedText(target, value, selectionStart, selectionEnd, '**');
+
+        updateElementValue(newValue, selectionPosition);
+        return;
+    }
+
+     // Cmd+I or Ctrl+I
+     if (isKeyComboTracked('meta+i', keyListeners) && isKeyComboPressed('meta+i', keyboardEvent)) {
+        const {newValue, selectionPosition} =
+            wrapSelectedText(target, value, selectionStart, selectionEnd, '*');
 
         updateElementValue(newValue, selectionPosition);
         return;
@@ -63,6 +72,8 @@ const isKeyComboPressed = (keyCombo, keyboardEvent) => {
             return keyCode === KEY_ENTER || keyCode === KEY_RETURN;
         case 'meta+b':
             return isMetaKeyPressed && keyCode === KEY_B;
+        case 'meta+i':
+            return isMetaKeyPressed && keyCode === KEY_I;
         case 'meta+s':
             return isMetaKeyPressed && keyCode === KEY_S;
         case 'shift+tab':
