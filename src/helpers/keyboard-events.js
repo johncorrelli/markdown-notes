@@ -25,6 +25,18 @@ export const handleKeyDown = (keyboardEvent, keyListeners, onChange, onSave) => 
         return;
     }
 
+    // Shift+Tab
+    if (isKeyComboTracked('shift+tab', keyListeners) && isKeyComboPressed('shift+tab', keyboardEvent)) {
+        try {
+            const {newValue, selectionPosition} = removeText(value, selectionEnd, TAB);
+
+            updateElementValue(newValue, selectionPosition);
+        } catch (e) { }
+
+        keyboardEvent.preventDefault();
+        return;
+    }
+
     // Tab
     if (isKeyComboTracked('tab', keyListeners) && isKeyComboPressed('tab', keyboardEvent)) {
         const {newValue, selectionPosition} = insertText(value, selectionEnd, TAB);
@@ -42,6 +54,8 @@ const isKeyComboPressed = (keyCombo, keyboardEvent) => {
             return keyCode === KEY_ENTER || keyCode === KEY_RETURN;
         case 'meta+s':
             return isMetaKeyPressed && keyCode === KEY_S;
+        case 'shift+tab':
+            return keyboardEvent.shiftKey && keyCode === KEY_TAB;
         case 'tab':
             return keyCode === KEY_TAB;
         default:
@@ -58,6 +72,23 @@ const insertText = (value, position, textToInsert) => {
 
     return {
         newValue: `${value.substring(0, position)}${textToInsert}${value.substring(position)}`,
+        selectionPosition
+    }
+}
+
+const removeText = (value, position, textToRemove) => {
+    const beforePosition = value.substring(0, position);
+    const textToRemoveLength = textToRemove.length;
+
+    if (beforePosition.substring(beforePosition.length - textToRemoveLength) !== textToRemove) {
+        throw new Error("Text to remove not found before cursor.");
+    }
+
+    const trimmedBefore = value.substring(0, position - textToRemoveLength);
+    const selectionPosition = position - textToRemove.length;
+
+    return {
+        newValue: `${trimmedBefore}${value.substring(position)}`,
         selectionPosition
     }
 }
