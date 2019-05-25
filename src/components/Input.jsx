@@ -3,12 +3,12 @@ import React from 'react';
 import {handleKeyDown} from '../helpers/keyboard-events';
 
 type Props = {
-  keyListeners: Array,
-  name: String,
-  onChange: e => void,
+  keyListeners: Array<string>,
+  name: string,
+  onChange: (value: string) => void,
   onSave: () => void,
-  tagName: String,
-  value: string,
+  tagName?: string,
+  value: ?string,
 };
 
 const Input = ({
