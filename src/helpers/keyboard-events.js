@@ -1,6 +1,17 @@
-import { KEY_S, KEY_ENTER, KEY_RETURN } from "keycode-js";
+import { KEY_S, KEY_TAB, KEY_ENTER, KEY_RETURN } from "keycode-js";
+
+const TAB = '    ';
 
 export const handleKeyDown = (keyboardEvent, keyListeners, onChange, onSave) => {
+    const {target} = keyboardEvent;
+    const {value, selectionEnd} = target;
+
+    const updateElementValue = (newValue, selectionPosition) => {
+        updateElementState(target, newValue, selectionPosition, onChange);
+        onSave();
+        keyboardEvent.preventDefault();
+    }
+
     // Cmd+S or Ctrl+S
     if (isKeyComboTracked('meta+s', keyListeners) && isKeyComboPressed('meta+s', keyboardEvent)) {
         onSave();
@@ -13,6 +24,14 @@ export const handleKeyDown = (keyboardEvent, keyListeners, onChange, onSave) => 
         onSave();
         return;
     }
+
+    // Tab
+    if (isKeyComboTracked('tab', keyListeners) && isKeyComboPressed('tab', keyboardEvent)) {
+        const {newValue, selectionPosition} = insertText(value, selectionEnd, TAB);
+
+        updateElementValue(newValue, selectionPosition);
+        return;
+    }
 }
 
 const isKeyComboPressed = (keyCombo, keyboardEvent) => {
@@ -23,6 +42,8 @@ const isKeyComboPressed = (keyCombo, keyboardEvent) => {
             return keyCode === KEY_ENTER || keyCode === KEY_RETURN;
         case 'meta+s':
             return isMetaKeyPressed && keyCode === KEY_S;
+        case 'tab':
+            return keyCode === KEY_TAB;
         default:
             return false;
     }
@@ -30,4 +51,18 @@ const isKeyComboPressed = (keyCombo, keyboardEvent) => {
 
 const isKeyComboTracked = (combo, keyListeners) => {
     return keyListeners.indexOf(combo) > -1;
+}
+
+const insertText = (value, position, textToInsert) => {
+    const selectionPosition = position + textToInsert.length;
+
+    return {
+        newValue: `${value.substring(0, position)}${textToInsert}${value.substring(position)}`,
+        selectionPosition
+    }
+}
+
+const updateElementState = (target, newValue, selectionPosition, onChange) => {
+    onChange(newValue);
+    setTimeout(() => { target.setSelectionRange(selectionPosition, selectionPosition); }, 1);
 }
