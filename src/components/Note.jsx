@@ -1,5 +1,6 @@
 // @flow
 import React, {useEffect, useState} from 'react';
+import Input from './Input';
 import MarkdownRenderer from 'react-markdown-renderer';
 import '../styles/note.scss';
 import 'github-markdown-css';
@@ -54,29 +55,33 @@ const Note = ({note, onSave}: Props) => {
             <div className="modify-note">
                 <div className="title">
                     Title:<br />
-                    <input
-                        name="title"
-                        onBlur={saveNote}
-                        onChange={(e) => setTitle(e.target.value)}
-                        value={title || ''}
+                    <Input
+                        name="value"
+                        keyListeners={['enter', 'meta+s']}
+                        onChange={(value) => setTitle(value)}
+                        onSave={saveNote}
+                        value={title}
                     />
                 </div>
                 <div className="category">
                     Category:<br />
-                    <input
-                        name="category"
-                        onBlur={saveNote}
-                        onChange={(e) => setCategory(e.target.value)}
-                        value={category || ''}
+                    <Input
+                        name="value"
+                        keyListeners={['enter', 'meta+s']}
+                        onChange={(value) => setCategory(value)}
+                        onSave={saveNote}
+                        value={category}
                     />
                 </div>
                 <div className="note">
                     Note:<br />
-                    <textarea
+                    <Input
                         name="value"
-                        onBlur={saveNote}
-                        onChange={(e) => setValue(e.target.value)}
-                        value={value || ''}
+                        keyListeners={['enter', 'meta+b', 'meta+i', 'meta+s', 'shift+tab', 'tab']}
+                        onChange={(value) => setValue(value)}
+                        onSave={saveNote}
+                        tagName="textarea"
+                        value={value}
                     />
                 </div>
             </div>
@@ -86,7 +91,6 @@ const Note = ({note, onSave}: Props) => {
                     markdown={value || ''}
                     options={{breaks: true, linkify: true, linkTarget: '_blank'}}
                 />
-
             </div>
         </div>
     );
