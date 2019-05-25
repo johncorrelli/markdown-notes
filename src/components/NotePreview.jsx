@@ -10,7 +10,7 @@ type Props = {
     value: string,
   },
   onClick: (id: string) => void,
-  isSelected: Boolean,
+  isSelected: boolean,
 };
 
 const NotePreview = ({note, onClick, isSelected}: Props) => {
