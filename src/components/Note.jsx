@@ -77,7 +77,7 @@ const Note = ({note, onSave}: Props) => {
                     Note:<br />
                     <Input
                         name="value"
-                        keyListeners={['enter', 'meta+s', 'shift+tab', 'tab']}
+                        keyListeners={['enter', 'meta+b', 'meta+s', 'shift+tab', 'tab']}
                         onChange={(value) => setValue(value)}
                         onSave={saveNote}
                         tagName="textarea"

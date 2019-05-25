@@ -1,15 +1,24 @@
-import { KEY_S, KEY_TAB, KEY_ENTER, KEY_RETURN } from "keycode-js";
+import { KEY_B, KEY_S, KEY_TAB, KEY_ENTER, KEY_RETURN } from "keycode-js";
 
 const TAB = '    ';
 
 export const handleKeyDown = (keyboardEvent, keyListeners, onChange, onSave) => {
     const {target} = keyboardEvent;
-    const {value, selectionEnd} = target;
+    const {value, selectionStart, selectionEnd} = target;
 
     const updateElementValue = (newValue, selectionPosition) => {
         updateElementState(target, newValue, selectionPosition, onChange);
         onSave();
         keyboardEvent.preventDefault();
+    }
+
+    // Cmd+B or Ctrl+B
+    if (isKeyComboTracked('meta+b', keyListeners) && isKeyComboPressed('meta+b', keyboardEvent)) {
+        const {newValue, selectionPosition} =
+            wrapSelectedText(target, value, selectionStart, selectionEnd, '**');
+
+        updateElementValue(newValue, selectionPosition);
+        return;
     }
 
     // Cmd+S or Ctrl+S
@@ -52,6 +61,8 @@ const isKeyComboPressed = (keyCombo, keyboardEvent) => {
     switch (keyCombo) {
         case 'enter':
             return keyCode === KEY_ENTER || keyCode === KEY_RETURN;
+        case 'meta+b':
+            return isMetaKeyPressed && keyCode === KEY_B;
         case 'meta+s':
             return isMetaKeyPressed && keyCode === KEY_S;
         case 'shift+tab':
@@ -91,6 +102,23 @@ const removeText = (value, position, textToRemove) => {
         newValue: `${trimmedBefore}${value.substring(position)}`,
         selectionPosition
     }
+}
+
+const wrapSelectedText = (target, value, selectionStart, selectionEnd, wrapWith) => {
+    const pieces = [
+        value.substring(0, selectionStart),
+        wrapWith,
+        value.substring(selectionStart, selectionEnd),
+        wrapWith,
+        value.substring(selectionEnd),
+    ];
+
+    const selectionPosition = selectionEnd + wrapWith.length;
+
+    return {
+        newValue: pieces.join(''),
+        selectionPosition
+    };
 }
 
 const updateElementState = (target, newValue, selectionPosition, onChange) => {
