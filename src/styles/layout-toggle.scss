@@ -17,7 +17,7 @@
         text-align: center;
 
         &:hover, &.selected {
-            background: $background-color-medium;
+            background: $toggle-background-selected;
         }
     }
 }

@@ -14,7 +14,7 @@
         padding: 10px;
 
         &:hover, &.selected {
-            background: $text-color;
+            background: $selected-note-highlight;
             color: $background-color-dark;
         }
 

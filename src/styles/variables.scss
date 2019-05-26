@@ -1,14 +1,18 @@
+@import "../../node_modules/nord/src/sass/nord.scss";
+
 $font-family: 'Fira Code', 'Monaco', sans-serif;
 $font-size: 14px;
-$text-color: #fff;
+$text-color: $nord6;
 
-$background-color-dark: #1e1e1e;
-$background-color-medium: #252526;
-$background-color-light: #eeeeee;
+$background-color-dark: $nord0;
+$background-color-medium: $nord1;
+$background-color-light: $nord6;
 
-$button-background-color: #6a7385;
-$button-text-color: #fff;
+$button-background-color: $nord10;
+$button-text-color: $text-color;
 
 $left-width: 15%;
 
-$toggle-background: $button-background-color;
+$selected-note-highlight: $nord4;
+$toggle-background: $nord9;
+$toggle-background-selected: $nord10;
