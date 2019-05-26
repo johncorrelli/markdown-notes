@@ -26,6 +26,15 @@
         }
     }
 
+    .category-selector {
+        display: block;
+        font-size: $font-size;
+        font-family: $font-family;
+        padding: 10px;
+        margin: 10px 5px;
+        width: calc(100% - 10px);
+    }
+
     .note-preview {
         cursor: pointer;
         padding: 10px;
