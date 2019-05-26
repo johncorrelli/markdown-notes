@@ -1,0 +1,23 @@
+@import "./variables";
+
+.layout-toggle {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 80px;
+
+    li {
+        background: $toggle-background;
+        cursor: pointer;
+        flex: 1;
+        padding: 5px 0;
+        text-align: center;
+
+        &:hover, &.selected {
+            background: $background-color-medium;
+        }
+    }
+}

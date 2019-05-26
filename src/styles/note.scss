@@ -1,16 +1,23 @@
 @import 'variables.scss';
 
 .selected-note {
+    align-items: stretch;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    left: $left-width;
+    position: absolute;
+    right: 0;
+    top: 0;
+
     .modify-note {
         background-color: $background-color-medium;
-        bottom: 0;
-        left: $left-width;
+        flex: 1;
+        flex-flow: column;
         overflow: auto;
-        padding: 20px 1%;
-        position: absolute;
-        text-align: left;
-        top: 0;
-        width: 38%;
+        padding: 20px 2%;
 
         input, textarea {
             background: rgba(255, 255, 255, 0.8);
@@ -33,13 +40,9 @@
 
     .view-note {
         background: $background-color-light;
-        bottom: 0;
-        color: #000;
-        left: 55%;
+        display: flex;
+        flex: 1;
         overflow: auto;
-        position: absolute;
-        top: 0;
-        width: 45%;
 
         .markdown-body {
             padding: 15px;
