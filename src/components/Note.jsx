@@ -84,7 +84,7 @@ const Note = ({note, onSave}: Props) => {
               value={category}
             />
           </div>
-          <div className="note">
+          <div className="edit-note">
             Note:
             <br />
             <Input

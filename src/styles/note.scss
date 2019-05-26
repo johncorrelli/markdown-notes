@@ -15,6 +15,7 @@
     .modify-note {
         background-color: $background-color-medium;
         flex: 1;
+        display: flex;
         flex-flow: column;
         overflow: auto;
         padding: 20px 2%;
@@ -33,8 +34,12 @@
             }
         }
 
-        textarea {
-            min-height: 500px;
+        .edit-note {
+            flex: 1;
+
+            textarea {
+                height: calc(100% - 3.5em);
+            }
         }
     }
 
