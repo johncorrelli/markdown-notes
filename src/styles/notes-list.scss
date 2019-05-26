@@ -9,6 +9,32 @@
     top: 0;
     width: $left-width;
 
+    .create-note {
+        background: $button-background-color;
+        border: none;
+        color: $button-text-color;
+        cursor: pointer;
+        display: block;
+        font-size: 1em;
+        font-weight: bold;
+        padding: 10px 0;
+        text-align: center;
+        width: 100%;
+
+        &:hover {
+            background: mix(#000000, $button-background-color, 20);
+        }
+    }
+
+    .category-selector {
+        display: block;
+        font-size: $font-size;
+        font-family: $font-family;
+        padding: 10px;
+        margin: 10px 5px;
+        width: calc(100% - 10px);
+    }
+
     .note-preview {
         cursor: pointer;
         padding: 10px;
@@ -25,23 +51,6 @@
         .note-category {
             font-size: 0.7em;
             font-weight: lighter;
-        }
-    }
-
-    .create-note {
-        background: $button-background-color;
-        border: none;
-        color: $button-text-color;
-        cursor: pointer;
-        display: block;
-        font-size: 1em;
-        font-weight: bold;
-        padding: 10px 0;
-        text-align: center;
-        width: 100%;
-
-        &:hover {
-            background: mix(#000000, $button-background-color, 20);
         }
     }
 }
