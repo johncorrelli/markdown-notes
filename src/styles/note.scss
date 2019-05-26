@@ -1,45 +1,53 @@
 @import 'variables.scss';
 
 .selected-note {
+    align-items: stretch;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    left: $left-width;
+    position: absolute;
+    right: 0;
+    top: 0;
+
     .modify-note {
         background-color: $background-color-medium;
-        bottom: 0;
-        left: $left-width;
+        flex: 1;
+        display: flex;
+        flex-flow: column;
         overflow: auto;
-        padding: 20px 1%;
-        position: absolute;
-        text-align: left;
-        top: 0;
-        width: 38%;
+        padding: 20px 2%;
 
         input, textarea {
             background: rgba(255, 255, 255, 0.8);
-            border: 1px $background-color-dark solid;
+            border: none;
             font-family: $font-family;
             font-size: $font-size;
             margin: 10px 0;
             padding: 5px;
-            width: calc(100% - 10px - 2px);
+            width: calc(100% - 10px);
 
             &:focus {
                 background: #fff;
             }
         }
 
-        textarea {
-            min-height: 500px;
+        .edit-note {
+            flex: 1;
+
+            textarea {
+                height: calc(100% - 3.5em);
+            }
         }
     }
 
     .view-note {
         background: $background-color-light;
-        bottom: 0;
-        color: #000;
-        left: 55%;
+        display: flex;
+        flex: 1;
         overflow: auto;
-        position: absolute;
-        top: 0;
-        width: 45%;
 
         .markdown-body {
             padding: 15px;
