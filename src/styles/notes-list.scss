@@ -33,6 +33,14 @@
         width: calc(100% - 10px);
     }
 
+    .search {
+        border: none;
+        display: block;
+        padding: 5px;
+        margin: 10px 5px;
+        width: calc(100% - 20px);
+    }
+
     .note-preview {
         cursor: pointer;
         padding: 10px;

@@ -14,8 +14,19 @@ type Props = {
 
 const NotesList = ({notes, onClick, onCreateNote, selectedNoteId}: Props) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [searchString, setSearchString] = useState('');
 
-  const filteredNotes = displayNotes(notes, selectedCategory);
+  const searchKeys = [
+    {name: 'title', weight: 0.7},
+    {name: 'value', weight: 0.3},
+  ];
+
+  const filteredNotes = displayNotes(
+    notes,
+    selectedCategory,
+    searchString,
+    searchKeys
+  );
 
   return (
     <div className="notes-list">
@@ -29,6 +40,14 @@ const NotesList = ({notes, onClick, onCreateNote, selectedNoteId}: Props) => {
       <CategorySelector
         notes={notes}
         onChange={selected => setSelectedCategory(selected)}
+      />
+
+      <input
+        className="search"
+        name="searchString"
+        onChange={e => setSearchString(e.target.value)}
+        placeholder="Enter search..."
+        value={searchString}
       />
 
       {filteredNotes.map(note => {

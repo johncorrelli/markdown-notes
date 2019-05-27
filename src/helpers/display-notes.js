@@ -1,4 +1,20 @@
-export function displayNotes(notes, selectedCategory) {
+import Fuse from 'fuse.js';
+
+const fuseOptions = {
+  shouldSort: true,
+  threshold: 0.6,
+  location: 0,
+  distance: 50,
+  maxPatternLength: 12,
+  minMatchCharLength: 3,
+};
+
+export function displayNotes(
+  notes,
+  selectedCategory,
+  searchString,
+  searchKeys
+) {
   const filteredNotes = notes.filter(note => {
     return !selectedCategory || selectedCategory === note.category;
   });
@@ -15,5 +31,11 @@ export function displayNotes(notes, selectedCategory) {
     return 0;
   });
 
-  return filteredNotes;
+  if (!searchString || !searchKeys) {
+    return filteredNotes;
+  }
+
+  const fuse = new Fuse(filteredNotes, {...fuseOptions, keys: searchKeys});
+
+  return fuse.search(searchString);
 }
