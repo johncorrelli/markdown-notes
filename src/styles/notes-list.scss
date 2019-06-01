@@ -1,61 +1,61 @@
 @import 'variables.scss';
 
 .notes-list {
-    background-color: $background-color-dark;
-    bottom: 0;
-    left: 0;
-    overflow: auto;
-    position: absolute;
-    top: 0;
-    width: $left-width;
+  background-color: $background-color-dark;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  width: $left-width;
 
-    .create-note {
-        background: $button-background-color;
-        border: none;
-        color: $button-text-color;
-        cursor: pointer;
-        display: block;
-        font-size: 1em;
-        font-weight: bold;
-        padding: $padding 0;
-        text-align: center;
-        width: 100%;
+  .create-note {
+    background: $button-background-color;
+    border: none;
+    color: $button-text-color;
+    cursor: pointer;
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    padding: $padding 0;
+    text-align: center;
+    width: 100%;
 
-        &:hover {
-            background: mix(#000000, $button-background-color, 20);
-        }
+    &:hover {
+      background: mix(#000000, $button-background-color, 20);
+    }
+  }
+
+  .category-selector {
+    display: block;
+    margin: $padding;
+    width: calc(100% - #{$padding * 2});
+  }
+
+  .search {
+    border: none;
+    display: block;
+    margin: $padding;
+    padding: ($padding / 4) ($padding / 2);
+    width: calc(100% - #{$padding * 3});
+  }
+
+  .note-preview {
+    cursor: pointer;
+    padding: $padding;
+
+    &:hover, &.selected {
+      background: $selected-note-highlight;
+      color: $background-color-dark;
     }
 
-    .category-selector {
-        display: block;
-        margin: $padding;
-        width: calc(100% - #{$padding * 2});
+    .note-title {
+      font-weight: bold;
     }
 
-    .search {
-        border: none;
-        display: block;
-        padding: ($padding / 4) ($padding / 2);
-        margin: $padding;
-        width: calc(100% - #{$padding * 3});
+    .note-category {
+      font-size: 0.7em;
+      font-weight: lighter;
     }
-
-    .note-preview {
-        cursor: pointer;
-        padding: $padding;
-
-        &:hover, &.selected {
-            background: $selected-note-highlight;
-            color: $background-color-dark;
-        }
-
-        .note-title {
-            font-weight: bold;
-        }
-
-        .note-category {
-            font-size: 0.7em;
-            font-weight: lighter;
-        }
-    }
+  }
 }
