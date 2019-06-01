@@ -7,6 +7,7 @@ type Props = {
   name: string,
   onChange: (value: string) => void,
   onSave: () => void,
+  placeholderText?: string,
   tagName?: string,
   value: ?string,
 };
@@ -16,6 +17,7 @@ const Input = ({
   name,
   onChange,
   onSave,
+  placeholderText,
   tagName,
   value,
 }: Props) => {
@@ -27,6 +29,7 @@ const Input = ({
       onBlur={onSave}
       onChange={e => onChange(e.target.value)}
       onKeyDown={e => handleKeyDown(e, keyListeners, onChange, onSave)}
+      placeholder={placeholderText}
       value={value || ''}
     />
   );

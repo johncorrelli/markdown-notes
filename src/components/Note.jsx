@@ -1,14 +1,10 @@
 // @flow
 import React, {useEffect, useState} from 'react';
 import Input from './Input';
-import LayoutToggle from './LayoutToggle';
+import NoteHeader from './NoteHeader';
 import MarkdownRenderer from 'react-markdown-renderer';
-import {
-  LAYOUTS,
-  LAYOUT_EDIT,
-  LAYOUT_MARKDOWN,
-  LAYOUT_SPLIT,
-} from '../constants/layout';
+import {LAYOUT_EDIT, LAYOUT_MARKDOWN, LAYOUT_SPLIT} from '../constants/layout';
+
 import '../styles/note.scss';
 import 'github-markdown-css';
 
@@ -47,12 +43,7 @@ const Note = ({note, onSave}: Props) => {
   };
 
   if (!note) {
-    return (
-      <div className="selected-note">
-        <div className="modify-note" />
-        <div className="view-note" />
-      </div>
-    );
+    return <div className="selected-note" />;
   }
 
   const showEdit = layout === LAYOUT_EDIT || layout === LAYOUT_SPLIT;
@@ -60,33 +51,19 @@ const Note = ({note, onSave}: Props) => {
 
   return (
     <div className={`selected-note ${layout}`}>
-      {showEdit && (
-        <div className="modify-note">
-          <div className="title">
-            Title:
-            <br />
-            <Input
-              keyListeners={['enter', 'meta+s']}
-              name="value"
-              onChange={value => setTitle(value)}
-              onSave={saveNote}
-              value={title}
-            />
-          </div>
-          <div className="category">
-            Category:
-            <br />
-            <Input
-              keyListeners={['enter', 'meta+s']}
-              name="value"
-              onChange={value => setCategory(value)}
-              onSave={saveNote}
-              value={category}
-            />
-          </div>
+      <NoteHeader
+        category={category}
+        layout={layout}
+        onSave={saveNote}
+        onSetCategory={value => setCategory(value)}
+        onSetLayout={nextLayout => setLayout(nextLayout)}
+        onSetTitle={value => setTitle(value)}
+        title={title}
+      />
+
+      <div className="note-details">
+        {showEdit && (
           <div className="edit-note">
-            Note:
-            <br />
             <Input
               keyListeners={[
                 'enter',
@@ -103,24 +80,18 @@ const Note = ({note, onSave}: Props) => {
               value={value}
             />
           </div>
-        </div>
-      )}
+        )}
 
-      {showMarkdown && (
-        <div className="view-note">
-          <MarkdownRenderer
-            className="markdown-body"
-            markdown={value || ''}
-            options={{breaks: true, linkify: true, linkTarget: '_blank'}}
-          />
-        </div>
-      )}
-
-      <LayoutToggle
-        options={LAYOUTS}
-        onChangeLayout={nextLayout => setLayout(nextLayout)}
-        selectedLayout={layout}
-      />
+        {showMarkdown && (
+          <div className="view-note">
+            <MarkdownRenderer
+              className="markdown-body"
+              markdown={value || ''}
+              options={{breaks: true, linkify: true, linkTarget: '_blank'}}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
