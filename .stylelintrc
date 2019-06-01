@@ -1,0 +1,40 @@
+{
+  "defaultSeverity": "error",
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "indentation": 2,
+    "max-empty-lines": 1,
+    "max-nesting-depth": 3,
+    "no-duplicate-selectors": true,
+    "no-extra-semicolons": true,
+    "comment-no-empty": true,
+    "rule-empty-line-before": ["always", { "except": ["first-nested"], "ignore": ["after-comment", "inside-block"] }],
+    "selector-list-comma-space-after": "always",
+    "selector-attribute-brackets-space-inside": "never",
+    "selector-combinator-space-after": "always",
+    "selector-combinator-space-before": "always",
+    "selector-descendant-combinator-no-non-space": true,
+    "selector-max-id": 0,
+    "selector-max-empty-lines": 0,
+    "selector-type-case": "lower",
+    "function-calc-no-unspaced-operator": true,
+    "function-name-case": "lower",
+    "function-parentheses-space-inside": "never",
+    "number-leading-zero": "always",
+    "shorthand-property-no-redundant-values": true,
+    "block-closing-brace-empty-line-before": "never",
+    "block-closing-brace-newline-before": "always",
+    "block-closing-brace-newline-after": "always",
+    "block-opening-brace-newline-after": "always",
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-block-no-redundant-longhand-properties": true,
+    "declaration-block-no-shorthand-property-overrides": true,
+    "declaration-block-semicolon-newline-after": "always",
+    "declaration-block-trailing-semicolon": "always",
+    "length-zero-no-unit": true,
+    "number-no-trailing-zeros": true,
+    "order/properties-alphabetical-order": true
+  }
+}
