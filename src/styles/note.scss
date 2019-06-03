@@ -24,18 +24,19 @@
     flex: 1;
     flex-flow: column;
     overflow: auto;
-    padding: $padding 2%;
+    padding: 0;
 
     textarea {
-      background: rgba(255, 255, 255, 0.8);
+      background: $background-color-medium;
       border: none;
-      height: calc(100% - 2em);
-      margin: $padding 0;
-      padding: $padding;
-      width: calc(100% - #{$padding * 2});
+      color: $text-color;
+      height: calc(100% - #{$padding * 4});
+      margin: 0;
+      padding: $padding * 2;
+      width: calc(100% - #{$padding * 4});
 
       &:focus {
-        background: #fff;
+        outline: none;
       }
     }
   }
