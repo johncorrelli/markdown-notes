@@ -44,12 +44,12 @@
   .view-note {
     background: $background-color-light;
     box-sizing: border-box;
-    display: flex;
     flex: 1;
     overflow: auto;
 
     .markdown-body {
       padding: $padding * 2;
+      width: calc(100% - #{$padding * 4});
     }
   }
 }
