@@ -1,4 +1,8 @@
 @import 'variables.scss';
+@import 'webkit-scrollbar-styles.scss';
+
+$header-height: 130px;
+$footer-height: 45px;
 
 .notes-list {
   background-color: $background-color-dark;
@@ -8,6 +12,40 @@
   position: absolute;
   top: 0;
   width: $left-width;
+
+  .header {
+    height: $header-height;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .scrollable-content {
+    bottom: $footer-height;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    right: 0;
+    top: $header-height;
+    width: 100%;
+
+    @include webkit-scrollbar($background-color-dark);
+  }
+
+  .footer {
+    bottom: 0;
+    box-sizing: border-box;
+    height: $footer-height;
+    left: 0;
+    padding-top: 13px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    width: 100%;
+  }
 
   .create-note {
     background: $button-background-color;
