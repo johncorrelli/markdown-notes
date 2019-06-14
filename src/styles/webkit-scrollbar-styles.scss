@@ -1,0 +1,13 @@
+@mixin webkit-scrollbar($background-color) {
+  &::-webkit-scrollbar {
+    background: desaturate(darken($background-color, 3%), 50%);
+    border-radius: 1em;
+    height: 8px;
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: desaturate(darken($background-color, 10%), 50%);
+    border-radius: 1em;
+  }
+}

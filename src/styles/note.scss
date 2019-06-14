@@ -1,4 +1,5 @@
 @import 'variables.scss';
+@import 'webkit-scrollbar-styles.scss';
 
 .selected-note {
   bottom: 0;
@@ -33,7 +34,10 @@
       height: calc(100% - #{$padding * 4});
       margin: 0;
       padding: $padding * 2;
+      resize: none;
       width: calc(100% - #{$padding * 4});
+
+      @include webkit-scrollbar($background-color-medium);
 
       &:focus {
         outline: none;
@@ -46,6 +50,8 @@
     box-sizing: border-box;
     flex: 1;
     overflow: auto;
+
+    @include webkit-scrollbar($background-color-light);
 
     .markdown-body {
       padding: $padding * 2;

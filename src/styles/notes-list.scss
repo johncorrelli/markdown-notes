@@ -1,4 +1,5 @@
 @import 'variables.scss';
+@import 'webkit-scrollbar-styles.scss';
 
 $header-height: 130px;
 $footer-height: 45px;
@@ -30,6 +31,8 @@ $footer-height: 45px;
     right: 0;
     top: $header-height;
     width: 100%;
+
+    @include webkit-scrollbar($background-color-dark);
   }
 
   .footer {
