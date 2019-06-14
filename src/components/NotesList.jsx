@@ -1,22 +1,23 @@
 // @flow
 import React, {useState} from 'react';
 import CategorySelector from './CategorySelector';
-import NotePreview from './NotePreview';
+import NoteCategory from './NoteCategory';
 import {displayNotes} from '../helpers/display-notes';
+import {getNoteCategories, getNotesByCategory} from '../helpers/categories';
 import '../styles/notes-list.scss';
 
 type Props = {
   downloadNotesUrl: string,
   notes: Array<Object>,
-  onClick: (id: string) => void,
+  onSelectNote: (id: string) => void,
   onCreateNote: () => void,
-  selectedNoteId: String,
+  selectedNoteId: string,
 };
 
 const NotesList = ({
   downloadNotesUrl,
   notes,
-  onClick,
+  onSelectNote,
   onCreateNote,
   selectedNoteId,
 }: Props) => {
@@ -35,6 +36,9 @@ const NotesList = ({
     searchKeys
   );
 
+  const allNoteCategories = getNoteCategories(notes);
+  const filteredNoteCategories = getNoteCategories(filteredNotes);
+
   return (
     <div className="notes-list">
       <div className="header">
@@ -46,7 +50,7 @@ const NotesList = ({
         />
 
         <CategorySelector
-          notes={notes}
+          categories={allNoteCategories}
           onChange={selected => setSelectedCategory(selected)}
         />
 
@@ -60,13 +64,14 @@ const NotesList = ({
       </div>
 
       <div className="scrollable-content">
-        {filteredNotes.map(note => {
+        {filteredNoteCategories.map((category, index) => {
           return (
-            <NotePreview
-              key={note.id}
-              note={note}
-              onClick={() => onClick(note.id)}
-              isSelected={selectedNoteId === note.id}
+            <NoteCategory
+              category={category}
+              key={index}
+              notes={getNotesByCategory(filteredNotes, category)}
+              onSelectNote={noteId => onSelectNote(noteId)}
+              selectedNoteId={selectedNoteId}
             />
           );
         })}

@@ -1,5 +1,7 @@
 import Fuse from 'fuse.js';
 
+const UNCATEGORIZED = 'Uncategorized';
+
 const fuseOptions = {
   shouldSort: true,
   threshold: 0.6,
@@ -16,6 +18,10 @@ export function displayNotes(
   searchKeys
 ) {
   const filteredNotes = notes.filter(note => {
+    if (!note.category) {
+      note.category = UNCATEGORIZED;
+    }
+
     return !selectedCategory || selectedCategory === note.category;
   });
 

@@ -47,7 +47,7 @@ function App() {
       <NoteList
         downloadNotesUrl={downloadNotesUrl}
         notes={allNotes}
-        onClick={onSelectNote}
+        onSelectNote={onSelectNote}
         onCreateNote={onCreateNote}
         selectedNoteId={selectedNote && selectedNote.id}
       />

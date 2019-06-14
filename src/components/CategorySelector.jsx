@@ -2,24 +2,14 @@
 import React from 'react';
 
 type Props = {
-  notes: Array<Object>,
+  categories: Array<Object>,
   onChange: (selectedCategory: string) => void,
 };
 
-const CategorySelector = ({notes, onChange}: Props) => {
-  const categories = [];
-
+const CategorySelector = ({categories, onChange}: Props) => {
   const handleChange = value => {
     onChange(value !== '' ? value : null);
   };
-
-  notes.forEach(note => {
-    if (categories.indexOf(note.category) !== -1) {
-      return;
-    }
-
-    categories.push(note.category);
-  });
 
   categories.sort();
 
