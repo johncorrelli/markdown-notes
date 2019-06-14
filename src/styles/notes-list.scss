@@ -78,6 +78,13 @@ $footer-height: 45px;
     width: calc(100% - #{$padding * 3});
   }
 
+  .note-category-heading {
+    background: darken($background-color-dark, 3%);
+    padding: 5px $padding;
+    font-size: 0.8em;
+    font-style: italic;
+  }
+
   .note-preview {
     cursor: pointer;
     padding: $padding;
