@@ -38,9 +38,14 @@ function App() {
   const [allNotes, setAllNotes] = useState(getNotes());
   const [selectedNote, setSelectedNote] = useState(null);
 
+  const downloadNotesUrl =
+    'data:text/json;charset=utf-8,' +
+    encodeURIComponent(JSON.stringify(allNotes));
+
   return (
     <div className="App">
       <NoteList
+        downloadNotesUrl={downloadNotesUrl}
         notes={allNotes}
         onClick={onSelectNote}
         onCreateNote={onCreateNote}
