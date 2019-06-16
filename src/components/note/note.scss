@@ -51,8 +51,6 @@
     flex: 1;
     overflow: auto;
 
-    @include webkit-scrollbar($background-color-light);
-
     .markdown-body {
       padding: $padding * 2;
       width: calc(100% - #{$padding * 4});
