@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import NoteList from './components/NotesList';
-import Note from './components/Note';
-import Storage from './components/Storage';
+import NoteList from './components/notes-list/NotesList';
+import Note from './components/note/Note';
+import Storage from './components/storage/Storage';
 
 import './styles/app.scss';
 

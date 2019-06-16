@@ -2,9 +2,9 @@
 import React, {useState} from 'react';
 import CategorySelector from './CategorySelector';
 import NoteCategory from './NoteCategory';
-import {displayNotes} from '../helpers/display-notes';
-import {getNoteCategories, getNotesByCategory} from '../helpers/categories';
-import '../styles/notes-list.scss';
+import {displayNotes} from '../../helpers/display-notes';
+import {getNoteCategories, getNotesByCategory} from '../../helpers/categories';
+import './notes-list.scss';
 
 type Props = {
   downloadNotesUrl: string,

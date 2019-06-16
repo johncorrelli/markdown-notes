@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
-import Input from './Input';
-import LayoutToggle from './LayoutToggle';
-import {LAYOUTS} from '../constants/layout';
-import '../styles/note-header.scss';
+import Input from '../shared/input/Input';
+import LayoutToggle from '../layout-toggle/LayoutToggle';
+import {LAYOUTS} from '../../constants/layout';
+import './note-header.scss';
 
 type Props = {
   category: ?string,

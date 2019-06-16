@@ -1,8 +1,8 @@
-@import 'variables.scss';
-@import 'webkit-scrollbar-styles.scss';
+@import '../../styles/variables';
+@import '../../styles/webkit-scrollbar-styles';
 
-$header-height: 130px;
-$footer-height: 45px;
+$header-height: 145px;
+$footer-height: 55px;
 
 .notes-list {
   background-color: $background-color-dark;
@@ -40,7 +40,7 @@ $footer-height: 45px;
     box-sizing: border-box;
     height: $footer-height;
     left: 0;
-    padding-top: 13px;
+    padding-top: 15px;
     position: absolute;
     right: 0;
     text-align: center;
@@ -79,7 +79,8 @@ $footer-height: 45px;
   }
 
   .note-category-heading {
-    background: darken($background-color-dark, 3%);
+    background: darken($background-color-dark, 2%);
+    display: block;
     padding: 5px $padding;
     font-size: 0.8em;
     font-style: italic;
@@ -88,6 +89,10 @@ $footer-height: 45px;
   .note-preview {
     cursor: pointer;
     padding: $padding;
+
+    &:nth-of-type(odd) {
+      background: lighten($background-color-dark, 2%);
+    }
 
     &:hover, &.selected {
       background: $selected-note-highlight;

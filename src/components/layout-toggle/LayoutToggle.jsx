@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
 import classNames from 'classnames/bind';
-import {LAYOUT_EDIT, LAYOUT_MARKDOWN, LAYOUT_SPLIT} from '../constants/layout';
-import '../styles/layout-toggle.scss';
+import {LAYOUT_EDIT, LAYOUT_MARKDOWN, LAYOUT_SPLIT} from '../../constants/layout';
+import './layout-toggle.scss';
 
 type Props = {
   options: Array<string>,
