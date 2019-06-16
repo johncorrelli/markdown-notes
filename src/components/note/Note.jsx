@@ -1,11 +1,11 @@
 // @flow
 import React, {useEffect, useState} from 'react';
-import Input from './Input';
+import Input from '../shared/input/Input';
 import NoteHeader from './NoteHeader';
 import MarkdownRenderer from 'react-markdown-renderer';
-import {LAYOUT_EDIT, LAYOUT_MARKDOWN, LAYOUT_SPLIT} from '../constants/layout';
+import {LAYOUT_EDIT, LAYOUT_MARKDOWN, LAYOUT_SPLIT} from '../../constants/layout';
 
-import '../styles/note.scss';
+import './note.scss';
 import 'github-markdown-css';
 
 type Props = {

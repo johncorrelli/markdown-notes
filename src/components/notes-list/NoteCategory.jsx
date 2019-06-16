@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import NotePreview from './NotePreview';
+import NotePreview from '../note/NotePreview';
 
 type Props = {
   category: string,
