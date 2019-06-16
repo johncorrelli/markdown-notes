@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, {Fragment} from 'react';
 import NotePreview from '../note/NotePreview';
 
 type Props = {
@@ -20,8 +20,8 @@ const NoteCategory = ({
   }
 
   return (
-    <div>
-      <div className="note-category-heading">{category}</div>
+    <Fragment>
+      <span className="note-category-heading">{category}</span>
       {notes.map(note => {
         return (
           <NotePreview
@@ -32,7 +32,7 @@ const NoteCategory = ({
           />
         );
       })}
-    </div>
+    </Fragment>
   );
 };
 
