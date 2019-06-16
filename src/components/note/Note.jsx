@@ -4,6 +4,7 @@ import Input from '../shared/input/Input';
 import NoteHeader from './NoteHeader';
 import MarkdownRenderer from 'react-markdown-renderer';
 import {LAYOUT_EDIT, LAYOUT_MARKDOWN, LAYOUT_SPLIT} from '../../constants/layout';
+import syntaxHighlighting from '../../helpers/syntax-highlighting';
 
 import './note.scss';
 import 'github-markdown-css';
@@ -40,6 +41,10 @@ const Note = ({note, onSave}: Props) => {
       category,
       value,
     });
+  };
+
+  const renderCodeBlock = (string, lang) => {
+    return syntaxHighlighting(string, lang);
   };
 
   if (!note) {
@@ -87,7 +92,14 @@ const Note = ({note, onSave}: Props) => {
             <MarkdownRenderer
               className="markdown-body"
               markdown={value || ''}
-              options={{breaks: true, linkify: true, linkTarget: '_blank'}}
+              options={{
+                breaks: true,
+                highlight: (string, lang) => {
+                  return renderCodeBlock(string, lang);
+                },
+                linkify: true,
+                linkTarget: '_blank',
+              }}
             />
           </div>
         )}
