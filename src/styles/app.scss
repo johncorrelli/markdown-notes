@@ -1,5 +1,6 @@
 @import 'variables.scss';
 @import 'webkit-scrollbar-styles';
+@import 'utils.scss';
 
 body {
   color: $text-color;
@@ -16,7 +17,11 @@ body {
   .secondary-button {
     background: $secondary-button-background;
     color: $secondary-button-text-color;
+    cursor: pointer;
+    border: none;
     border-radius: 3px;
+    margin: 2px;
+    outline: none;
     padding: 5px $padding;
     text-decoration: none;
 

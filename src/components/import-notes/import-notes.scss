@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+
+$import-padding: 10%;
+
+.import-notes {
+    bottom: $import-padding;
+    box-shadow: $toggle-background 0 0 10px;
+    display: flex;
+    left: $import-padding;
+    position: fixed;
+    right: $import-padding;
+    top: $import-padding;
+
+    * {
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    .instructions {
+        background: $import-left-side-background;
+        box-sizing: border-box;
+        color: $text-color;
+        flex-direction: column;
+        flex: 1;
+        min-width: 300px;
+        padding: 25px;
+    }
+
+    .import {
+        flex-direction: column;
+        flex: 2;
+        padding: 20px;
+    }
+}
