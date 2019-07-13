@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import ImportNotes from './components/import-notes/ImportNotes';
 import NoteList from './components/notes-list/NotesList';
 import Note from './components/note/Note';
 import Storage from './components/storage/Storage';
@@ -37,6 +38,7 @@ function App() {
 
   const [allNotes, setAllNotes] = useState(getNotes());
   const [selectedNote, setSelectedNote] = useState(null);
+  const [isImportingNotes, setIsImportingNotes] = useState(true);
 
   const downloadNotesUrl =
     'data:text/json;charset=utf-8,' +
@@ -49,9 +51,17 @@ function App() {
         notes={allNotes}
         onSelectNote={onSelectNote}
         onCreateNote={onCreateNote}
+        onImportNotes={() => setIsImportingNotes(!isImportingNotes)}
         selectedNoteId={selectedNote && selectedNote.id}
       />
       <Note note={selectedNote} onSave={onSaveNote} />
+
+      {isImportingNotes && (
+        <ImportNotes
+          onNotImportingNotes={() => setIsImportingNotes(false)}
+          onSaveNote={onSaveNote}
+        />
+      )}
     </div>
   );
 }

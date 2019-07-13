@@ -11,6 +11,7 @@ type Props = {
   notes: Array<Object>,
   onSelectNote: (id: string) => void,
   onCreateNote: () => void,
+  onImportNotes: () => void,
   selectedNoteId: string,
 };
 
@@ -19,6 +20,7 @@ const NotesList = ({
   notes,
   onSelectNote,
   onCreateNote,
+  onImportNotes,
   selectedNoteId,
 }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -78,12 +80,15 @@ const NotesList = ({
       </div>
 
       <div className="footer">
+        <button className="secondary-button" onClick={onImportNotes}>
+          Import
+        </button>
         <a
           className="secondary-button"
           download="markdown-notes.json"
           href={downloadNotesUrl}
         >
-          Download Notes
+          Export
         </a>
       </div>
     </div>
