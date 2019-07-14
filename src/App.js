@@ -38,7 +38,7 @@ function App() {
 
   const [allNotes, setAllNotes] = useState(getNotes());
   const [selectedNote, setSelectedNote] = useState(null);
-  const [isImportingNotes, setIsImportingNotes] = useState(true);
+  const [isImportingNotes, setIsImportingNotes] = useState(false);
 
   const downloadNotesUrl =
     'data:text/json;charset=utf-8,' +
