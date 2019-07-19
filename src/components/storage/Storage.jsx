@@ -5,6 +5,10 @@ class Storage {
     this.storage = store;
   }
 
+  deleteNote = id => {
+    this.storage.removeItem(id);
+  };
+
   getAllNotes = () => {
     const values = [];
     const keys = Object.keys(this.storage);

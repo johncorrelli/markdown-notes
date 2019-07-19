@@ -8,6 +8,7 @@ import './note-header.scss';
 type Props = {
   category: ?string,
   layout: string,
+  onDelete: () => void,
   onSave: () => void,
   onSetCategory: (category: string) => void,
   onSetLayout: (layout: string) => void,
@@ -18,12 +19,25 @@ type Props = {
 const NoteHeader = ({
   category,
   layout,
+  onDelete,
   onSave,
   onSetCategory,
   onSetLayout,
   onSetTitle,
   title,
 }: Props) => {
+  const onDeleteWithConfirmation = () => {
+    const confirm = window.confirm(
+      'Are you sure you want to delete this note?'
+    );
+
+    if (!confirm) {
+      return;
+    }
+
+    onDelete();
+  };
+
   return (
     <div className="note-header">
       <div className="title">
@@ -46,6 +60,13 @@ const NoteHeader = ({
           value={category}
         />
       </div>
+
+      <button
+        className="delete-note"
+        onClick={() => onDeleteWithConfirmation()}
+      >
+        Delete
+      </button>
 
       <LayoutToggle
         options={LAYOUTS}
