@@ -13,6 +13,14 @@ function App() {
     onSelectNote(note.id);
   };
 
+  const onDeleteNote = note => {
+    const {id} = note;
+
+    Storage.deleteNote(id);
+    onSelectNote(null);
+    setAllNotes(getNotes());
+  };
+
   const onSelectNote = id => {
     setSelectedNote(getNote(id));
   };
@@ -54,7 +62,8 @@ function App() {
         onImportNotes={() => setIsImportingNotes(!isImportingNotes)}
         selectedNoteId={selectedNote && selectedNote.id}
       />
-      <Note note={selectedNote} onSave={onSaveNote} />
+
+      <Note note={selectedNote} onDelete={onDeleteNote} onSave={onSaveNote} />
 
       {isImportingNotes && (
         <ImportNotes
