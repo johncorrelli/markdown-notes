@@ -27,7 +27,7 @@ const ImportNotes = ({onNotImportingNotes, onSaveNote}: Props) => {
 ]\n \
 ';
 
-  const [newNotes, setNewNotes] = useState(null);
+  const [newNotes, setNewNotes] = useState('');
 
   const saveNewNote = () => {
     const errorMessage =
