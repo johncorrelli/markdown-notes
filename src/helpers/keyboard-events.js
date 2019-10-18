@@ -102,19 +102,26 @@ export const handleKeyDown = (
 };
 
 const isKeyComboPressed = (keyCombo, keyboardEvent) => {
-  const {keyCode, metaKey: isMetaKeyPressed} = keyboardEvent;
+  const {
+    ctrlKey: isCtrlKeyPressed,
+    keyCode,
+    metaKey: isMetaKeyPressed,
+    shiftKey: isShiftKeyPressed,
+  } = keyboardEvent;
+
+  const isCtrlOrMetaKey = isCtrlKeyPressed || isMetaKeyPressed;
 
   switch (keyCombo) {
     case 'enter':
       return keyCode === KEY_ENTER || keyCode === KEY_RETURN;
     case 'meta+b':
-      return isMetaKeyPressed && keyCode === KEY_B;
+      return isCtrlOrMetaKey && keyCode === KEY_B;
     case 'meta+i':
-      return isMetaKeyPressed && keyCode === KEY_I;
+      return isCtrlOrMetaKey && keyCode === KEY_I;
     case 'meta+s':
-      return isMetaKeyPressed && keyCode === KEY_S;
+      return isCtrlOrMetaKey && keyCode === KEY_S;
     case 'shift+tab':
-      return keyboardEvent.shiftKey && keyCode === KEY_TAB;
+      return isShiftKeyPressed && keyCode === KEY_TAB;
     case 'tab':
       return keyCode === KEY_TAB;
     default:
