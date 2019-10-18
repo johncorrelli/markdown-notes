@@ -11,6 +11,7 @@ type Props = {
 
 const ImportNotes = ({onNotImportingNotes, onSaveNote}: Props) => {
   const importNoteShape =
+    // eslint-disable-next-line
     '```json \n \
 [ \n \
   {\n \
@@ -26,7 +27,7 @@ const ImportNotes = ({onNotImportingNotes, onSaveNote}: Props) => {
 ]\n \
 ';
 
-  const [newNotes, setNewNotes] = useState(null);
+  const [newNotes, setNewNotes] = useState('');
 
   const saveNewNote = () => {
     const errorMessage =
@@ -57,6 +58,8 @@ const ImportNotes = ({onNotImportingNotes, onSaveNote}: Props) => {
       };
 
       onSaveNote(newNote);
+
+      return true;
     });
 
     window.alert('Your notes have been saved. You can close this window now.');
