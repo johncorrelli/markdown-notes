@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import Input from '../shared/input/Input';
 import LayoutToggle from '../layout-toggle/LayoutToggle';
 import CategorySelector from '../category-selector/CategorySelector';
-import {LAYOUTS} from '../../constants/layout';
+import {LAYOUT_PRESENTER, LAYOUTS} from '../../constants/layout';
 import {EMPTY_CATEGORY_NAME} from '../../constants/categories';
 import './note-header.scss';
 
@@ -28,6 +28,7 @@ const NoteHeader = ({
 }: Props) => {
   const noteCategoryValue = category || EMPTY_CATEGORY_NAME;
   const hasNoteCategories = noteCategories.filter(n => n !== null).length > 0;
+  const isPresenter = layout === LAYOUT_PRESENTER;
 
   const [isAddingNewCategory, setIsAddingNewCategory] = useState(false);
   const [newCategory, setNewCategory] = useState(noteCategoryValue);
@@ -75,11 +76,11 @@ const NoteHeader = ({
     setIsAddingNewCategory(false);
   };
 
-
   return (
     <div className="note-header">
       <div className="title">
         <Input
+          disabled={isPresenter}
           keyListeners={['enter', 'meta+s']}
           name="value"
           onChange={value => setNoteTitle(value)}
@@ -89,7 +90,7 @@ const NoteHeader = ({
         />
       </div>
       <div className="category">
-        {!isAddingNewCategory && hasNoteCategories ? (
+        {!isAddingNewCategory && hasNoteCategories && !isPresenter ? (
           <CategorySelector
             blankOption="- add new category -"
             categories={noteCategories}
@@ -98,6 +99,7 @@ const NoteHeader = ({
           />
         ) : (
           <Input
+            disabled={isPresenter}
             keyListeners={['enter', 'meta+s']}
             name="value"
             onChange={value => setNewCategory(value)}
@@ -108,12 +110,14 @@ const NoteHeader = ({
         )}
       </div>
 
-      <button
-        className="delete-note"
-        onClick={() => onDeleteWithConfirmation()}
-      >
-        Delete
-      </button>
+      {!isPresenter && (
+        <button
+          className="delete-note"
+          onClick={() => onDeleteWithConfirmation()}
+        >
+          Delete
+        </button>
+      )}
 
       <LayoutToggle
         options={LAYOUTS}

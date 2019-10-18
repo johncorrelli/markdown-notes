@@ -4,10 +4,12 @@ import CategorySelector from '../category-selector/CategorySelector';
 import NoteCategory from './NoteCategory';
 import {displayNotes} from '../../helpers/display-notes';
 import {getNoteCategories, getNotesByCategory} from '../../helpers/categories';
+import {LAYOUT_PRESENTER} from '../../constants/layout';
 import './notes-list.scss';
 
 type Props = {
   downloadNotesUrl: string,
+  layout: string,
   noteCategories: Array<Object>,
   notes: Array<Object>,
   onSelectNote: (id: string) => void,
@@ -18,11 +20,12 @@ type Props = {
 
 const NotesList = ({
   downloadNotesUrl,
+  layout,
   noteCategories,
   notes,
-  onSelectNote,
   onCreateNote,
   onImportNotes,
+  onSelectNote,
   selectedNoteId,
 }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -41,6 +44,10 @@ const NotesList = ({
   );
 
   const filteredNoteCategories = getNoteCategories(filteredNotes);
+
+  if (layout === LAYOUT_PRESENTER) {
+    return null;
+  }
 
   return (
     <div className="notes-list">

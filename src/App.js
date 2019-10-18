@@ -4,6 +4,7 @@ import NoteList from './components/notes-list/NotesList';
 import Note from './components/note/Note';
 import Storage from './components/storage/Storage';
 import {getNoteCategories} from './helpers/categories';
+import {LAYOUT_SPLIT} from './constants/layout';
 
 import './styles/app.scss';
 
@@ -52,6 +53,7 @@ function App() {
   const [allNotes, setAllNotes] = useState(getNotes());
   const [selectedNote, setSelectedNote] = useState(null);
   const [isImportingNotes, setIsImportingNotes] = useState(false);
+  const [layout, setLayout] = useState(LAYOUT_SPLIT);
   const [noteCategories, setNoteCategories] = useState(
     getNoteCategories(allNotes)
   );
@@ -64,6 +66,7 @@ function App() {
     <div className="App">
       <NoteList
         downloadNotesUrl={downloadNotesUrl}
+        layout={layout}
         noteCategories={noteCategories}
         notes={allNotes}
         onSelectNote={onSelectNote}
@@ -73,9 +76,11 @@ function App() {
       />
 
       <Note
+        layout={layout}
         note={selectedNote}
         noteCategories={noteCategories}
         onDelete={onDeleteNote}
+        onLayoutChange={setLayout}
         onSave={onSaveNote}
       />
 

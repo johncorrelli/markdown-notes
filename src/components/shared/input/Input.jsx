@@ -3,6 +3,7 @@ import React from 'react';
 import {handleKeyDown} from '../../../helpers/keyboard-events';
 
 type Props = {
+  disabled?: boolean,
   keyListeners: Array<string>,
   name: string,
   onChange: (value: string) => void,
@@ -13,6 +14,7 @@ type Props = {
 };
 
 const Input = ({
+  disabled,
   keyListeners,
   name,
   onChange,
@@ -22,6 +24,10 @@ const Input = ({
   value,
 }: Props) => {
   const TagName = tagName || 'input';
+
+  if (disabled === true) {
+    return <TagName disabled={true} value={value || ''} />;
+  }
 
   const onBlur = value => {
     return onSave(value);

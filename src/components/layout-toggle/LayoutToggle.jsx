@@ -5,6 +5,7 @@ import {
   LAYOUT_EDIT,
   LAYOUT_MARKDOWN,
   LAYOUT_SPLIT,
+  LAYOUT_PRESENTER,
 } from '../../constants/layout';
 import './layout-toggle.scss';
 
@@ -17,6 +18,8 @@ type Props = {
 const LayoutToggle = ({options, onChangeLayout, selectedLayout}: Props) => {
   const getLayoutIcon = layout => {
     switch (layout) {
+      case LAYOUT_PRESENTER:
+        return 'P';
       case LAYOUT_EDIT:
         return '_|';
       case LAYOUT_MARKDOWN:
