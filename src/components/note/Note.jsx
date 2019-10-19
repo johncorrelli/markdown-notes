@@ -25,31 +25,29 @@ type Props = {
 };
 
 const Note = ({note, onDelete, onSave}: Props) => {
-  const id = note && note.id;
-  const [title, setTitle] = useState(null);
-  const [category, setCategory] = useState(null);
-  const [value, setValue] = useState(null);
+  const noteValue = note && note.value;
+  const [value, setValue] = useState(noteValue || '');
   const [layout, setLayout] = useState(LAYOUT_SPLIT);
 
   useEffect(() => {
-    if (note) {
-      setTitle(note.title);
-      setCategory(note.category);
-      setValue(note.value);
-    }
-  }, [note]);
+    setValue(noteValue || '');
+  }, [noteValue]);
 
-  const deleteNote = () => {
+  const onDeleteNote = () => {
     onDelete(note);
   };
 
-  const saveNote = () => {
-    onSave({
-      id,
-      title,
-      category,
-      value,
-    });
+  const onUpdateNote = newAttributes => {
+    const newNote = {
+      ...note,
+      ...newAttributes,
+    };
+
+    onSave(newNote);
+  };
+
+  const onSaveNote = nextValue => {
+    onUpdateNote({value: nextValue});
   };
 
   const renderCodeBlock = (string, lang) => {
@@ -66,14 +64,12 @@ const Note = ({note, onDelete, onSave}: Props) => {
   return (
     <div className={`selected-note ${layout}`}>
       <NoteHeader
-        category={category}
+        category={note && note.category}
         layout={layout}
-        onDelete={deleteNote}
-        onSave={saveNote}
-        onSetCategory={value => setCategory(value)}
+        onDelete={onDeleteNote}
+        onUpdateNote={onUpdateNote}
         onSetLayout={nextLayout => setLayout(nextLayout)}
-        onSetTitle={value => setTitle(value)}
-        title={title}
+        title={note && note.title}
       />
 
       <div className="note-details">
@@ -90,7 +86,7 @@ const Note = ({note, onDelete, onSave}: Props) => {
               ]}
               name="value"
               onChange={value => setValue(value)}
-              onSave={saveNote}
+              onSave={value => onSaveNote(value)}
               tagName="textarea"
               value={value}
             />

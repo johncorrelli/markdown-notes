@@ -44,6 +44,7 @@ function App() {
 
     setAllNotes(allNotes);
     setNoteCategories(getNoteCategories(allNotes));
+    setSelectedNote(note);
 
     return savedNote;
   };
