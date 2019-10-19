@@ -26,6 +26,7 @@ const CategorySelector = ({
       value={value || ''}
       name="categoryFilter"
       onChange={e => handleChange(e.target.value)}
+      onBlur={e => handleChange(e.target.value)}
     >
       {blankOption && <option value="">{blankOption}</option>}
       {categories.map((category, index) => {
