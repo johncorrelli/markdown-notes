@@ -3,6 +3,7 @@ import ImportNotes from './components/import-notes/ImportNotes';
 import NoteList from './components/notes-list/NotesList';
 import Note from './components/note/Note';
 import Storage from './components/storage/Storage';
+import {getNoteCategories} from './helpers/categories';
 
 import './styles/app.scss';
 
@@ -39,7 +40,10 @@ function App() {
 
   const onSaveNote = note => {
     const savedNote = Storage.saveNote(note);
-    setAllNotes(getNotes());
+    const allNotes = getNotes();
+
+    setAllNotes(allNotes);
+    setNoteCategories(getNoteCategories(allNotes));
 
     return savedNote;
   };
@@ -47,6 +51,9 @@ function App() {
   const [allNotes, setAllNotes] = useState(getNotes());
   const [selectedNote, setSelectedNote] = useState(null);
   const [isImportingNotes, setIsImportingNotes] = useState(false);
+  const [noteCategories, setNoteCategories] = useState(
+    getNoteCategories(allNotes)
+  );
 
   const downloadNotesUrl =
     'data:text/json;charset=utf-8,' +
@@ -56,6 +63,7 @@ function App() {
     <div className="App">
       <NoteList
         downloadNotesUrl={downloadNotesUrl}
+        noteCategories={noteCategories}
         notes={allNotes}
         onSelectNote={onSelectNote}
         onCreateNote={onCreateNote}

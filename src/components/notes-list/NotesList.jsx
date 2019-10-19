@@ -8,6 +8,7 @@ import './notes-list.scss';
 
 type Props = {
   downloadNotesUrl: string,
+  noteCategories: Array<Object>,
   notes: Array<Object>,
   onSelectNote: (id: string) => void,
   onCreateNote: () => void,
@@ -17,6 +18,7 @@ type Props = {
 
 const NotesList = ({
   downloadNotesUrl,
+  noteCategories,
   notes,
   onSelectNote,
   onCreateNote,
@@ -38,7 +40,6 @@ const NotesList = ({
     searchKeys
   );
 
-  const allNoteCategories = getNoteCategories(notes);
   const filteredNoteCategories = getNoteCategories(filteredNotes);
 
   return (
@@ -52,7 +53,7 @@ const NotesList = ({
         />
 
         <CategorySelector
-          categories={allNoteCategories}
+          categories={noteCategories}
           onChange={selected => setSelectedCategory(selected)}
         />
 
