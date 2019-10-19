@@ -53,8 +53,10 @@ const NotesList = ({
         />
 
         <CategorySelector
+          blankOption="All Categories"
           categories={noteCategories}
           onChange={selected => setSelectedCategory(selected)}
+          value={selectedCategory}
         />
 
         <input

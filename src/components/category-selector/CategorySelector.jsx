@@ -2,11 +2,18 @@
 import React from 'react';
 
 type Props = {
+  blankOption?: string,
   categories: Array<Object>,
   onChange: (selectedCategory: string) => void,
+  value?: string,
 };
 
-const CategorySelector = ({categories, onChange}: Props) => {
+const CategorySelector = ({
+  blankOption,
+  categories,
+  onChange,
+  value,
+}: Props) => {
   const handleChange = value => {
     onChange(value !== '' ? value : null);
   };
@@ -16,10 +23,11 @@ const CategorySelector = ({categories, onChange}: Props) => {
   return (
     <select
       className="category-selector"
+      value={value || ''}
       name="categoryFilter"
       onChange={e => handleChange(e.target.value)}
     >
-      <option value="">All Categories</option>
+      {blankOption && <option value="">{blankOption}</option>}
       {categories.map((category, index) => {
         return <option key={index}>{category}</option>;
       })}
