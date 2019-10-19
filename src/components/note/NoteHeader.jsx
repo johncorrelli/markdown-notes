@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import Input from '../shared/input/Input';
 import LayoutToggle from '../layout-toggle/LayoutToggle';
+import CategorySelector from '../category-selector/CategorySelector';
 import {LAYOUTS} from '../../constants/layout';
 import {EMPTY_CATEGORY_NAME} from '../../constants/categories';
 import './note-header.scss';
@@ -9,6 +10,7 @@ import './note-header.scss';
 type Props = {
   category: ?string,
   layout: string,
+  noteCategories: Array<Object>,
   onDelete: () => void,
   onSetLayout: (layout: string) => void,
   onUpdateNote: (object: Object) => void,
@@ -18,13 +20,17 @@ type Props = {
 const NoteHeader = ({
   category,
   layout,
+  noteCategories,
   onDelete,
   onSetLayout,
   onUpdateNote,
   title,
 }: Props) => {
   const noteCategoryValue = category || EMPTY_CATEGORY_NAME;
+  const hasNoteCategories = noteCategories.filter(n => n !== null).length > 0;
 
+  const [isAddingNewCategory, setIsAddingNewCategory] = useState(false);
+  const [newCategory, setNewCategory] = useState(noteCategoryValue);
   const [noteCategory, setNoteCategory] = useState(noteCategoryValue);
   const [noteTitle, setNoteTitle] = useState(title);
 
@@ -51,9 +57,24 @@ const NoteHeader = ({
   };
 
   const onSaveCategory = nextCategory => {
+    if (!nextCategory) {
+      setIsAddingNewCategory(true);
+      return;
+    }
+
     setNoteCategory(nextCategory);
     onUpdateNote({category: nextCategory});
   };
+
+  const onSaveNewCategory = newCategory => {
+    const updatedCategoryName =
+      newCategory !== '' ? newCategory : EMPTY_CATEGORY_NAME;
+
+    setNoteCategory(updatedCategoryName);
+    onUpdateNote({category: updatedCategoryName});
+    setIsAddingNewCategory(false);
+  };
+
 
   return (
     <div className="note-header">
@@ -68,14 +89,23 @@ const NoteHeader = ({
         />
       </div>
       <div className="category">
-        <Input
-          keyListeners={['enter', 'meta+s']}
-          name="value"
-          onChange={value => setNoteCategory(value)}
-          onSave={value => onSaveCategory(value)}
-          placeholderText="enter category"
-          value={noteCategory}
-        />
+        {!isAddingNewCategory && hasNoteCategories ? (
+          <CategorySelector
+            blankOption="- add new category -"
+            categories={noteCategories}
+            onChange={nextCategory => onSaveCategory(nextCategory)}
+            value={noteCategory}
+          />
+        ) : (
+          <Input
+            keyListeners={['enter', 'meta+s']}
+            name="value"
+            onChange={value => setNewCategory(value)}
+            onSave={value => onSaveNewCategory(value)}
+            placeholderText="enter category"
+            value={newCategory}
+          />
+        )}
       </div>
 
       <button

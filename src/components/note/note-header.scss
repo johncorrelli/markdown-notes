@@ -1,5 +1,7 @@
 @import '../../styles/variables';
 
+$category-width: calc(100% - 120px);
+
 .note-header {
   background: $background-color-dark;
   box-sizing: border-box;
@@ -13,7 +15,15 @@
     display: block;
     font-size: 2em;
     font-weight: 600;
-    width: calc(100% - 120px);
+    width: $category-width;
+  }
+
+  .category select {
+    background: $background-color-dark;
+    border: none;
+    color: $text-color;
+    cursor: pointer;
+    width: $category-width;
   }
 
   .category input {

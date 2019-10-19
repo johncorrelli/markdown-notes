@@ -20,11 +20,12 @@ type Props = {
     category: string,
     value: string,
   },
+  noteCategories: Array<Object>,
   onDelete: (note: Object) => void,
   onSave: (note: Object) => void,
 };
 
-const Note = ({note, onDelete, onSave}: Props) => {
+const Note = ({note, noteCategories, onDelete, onSave}: Props) => {
   const noteValue = note && note.value;
   const [value, setValue] = useState(noteValue || '');
   const [layout, setLayout] = useState(LAYOUT_SPLIT);
@@ -66,6 +67,7 @@ const Note = ({note, onDelete, onSave}: Props) => {
       <NoteHeader
         category={note && note.category}
         layout={layout}
+        noteCategories={noteCategories}
         onDelete={onDeleteNote}
         onUpdateNote={onUpdateNote}
         onSetLayout={nextLayout => setLayout(nextLayout)}

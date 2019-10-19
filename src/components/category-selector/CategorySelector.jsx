@@ -18,8 +18,6 @@ const CategorySelector = ({
     onChange(value !== '' ? value : null);
   };
 
-  categories.sort();
-
   return (
     <select
       className="category-selector"
@@ -29,9 +27,13 @@ const CategorySelector = ({
       onBlur={e => handleChange(e.target.value)}
     >
       {blankOption && <option value="">{blankOption}</option>}
-      {categories.map((category, index) => {
-        return <option key={index}>{category}</option>;
-      })}
+      {categories
+        .filter(c => c !== null)
+        .sort()
+        .map((category, index) => {
+          return <option key={index}>{category}</option>
+        })
+      }
     </select>
   );
 };

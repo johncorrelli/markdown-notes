@@ -72,7 +72,12 @@ function App() {
         selectedNoteId={selectedNote && selectedNote.id}
       />
 
-      <Note note={selectedNote} onDelete={onDeleteNote} onSave={onSaveNote} />
+      <Note
+        note={selectedNote}
+        noteCategories={noteCategories}
+        onDelete={onDeleteNote}
+        onSave={onSaveNote}
+      />
 
       {isImportingNotes && (
         <ImportNotes
