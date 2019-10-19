@@ -1,6 +1,6 @@
 // @flow
 import React, {useState} from 'react';
-import CategorySelector from './CategorySelector';
+import CategorySelector from '../category-selector/CategorySelector';
 import NoteCategory from './NoteCategory';
 import {displayNotes} from '../../helpers/display-notes';
 import {getNoteCategories, getNotesByCategory} from '../../helpers/categories';
