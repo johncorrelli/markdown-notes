@@ -2,6 +2,7 @@
 import React, {useState} from 'react';
 import MarkdownRenderer from 'react-markdown-renderer';
 import syntaxHighlighting from '../../helpers/syntax-highlighting';
+import {EMPTY_CATEGORY_NAME} from '../../constants/categories';
 import './import-notes.scss';
 
 type Props = {
@@ -53,7 +54,7 @@ const ImportNotes = ({onNotImportingNotes, onSaveNote}: Props) => {
     notesToImport.map(note => {
       const newNote = {
         title: note.title || 'Unset Title',
-        category: note.category || 'Uncategorized',
+        category: note.category || EMPTY_CATEGORY_NAME,
         value: note.value || '',
       };
 
