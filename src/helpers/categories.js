@@ -12,8 +12,8 @@ export const getNoteCategories = notes => {
   });
 
   uniqueCategories.sort((a, b) => {
-    const aCategory = a.toLowerCase();
-    const bCategory = b.toLowerCase();
+    const aCategory = a && a.toLowerCase();
+    const bCategory = b && b.toLowerCase();
 
     if (aCategory < bCategory) {
       return -1;
