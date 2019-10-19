@@ -1,6 +1,5 @@
 import Fuse from 'fuse.js';
-
-const UNCATEGORIZED = 'Uncategorized';
+import {EMPTY_CATEGORY_NAME} from '../constants/categories';
 
 const fuseOptions = {
   shouldSort: true,
@@ -19,7 +18,7 @@ export function displayNotes(
 ) {
   const filteredNotes = notes.filter(note => {
     if (!note.category) {
-      note.category = UNCATEGORIZED;
+      note.category = EMPTY_CATEGORY_NAME;
     }
 
     return !selectedCategory || selectedCategory === note.category;

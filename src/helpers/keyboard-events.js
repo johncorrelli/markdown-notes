@@ -11,9 +11,12 @@ export const handleKeyDown = (
   const {target} = keyboardEvent;
   const {value, selectionStart, selectionEnd} = target;
 
+  const onSaveValue = value => {
+    onSave(value);
+  };
+
   const updateElementValue = (newValue, selectionPosition) => {
     updateElementState(target, newValue, selectionPosition, onChange);
-    onSave();
     keyboardEvent.preventDefault();
   };
 
@@ -56,7 +59,7 @@ export const handleKeyDown = (
     isKeyComboTracked('meta+s', keyListeners) &&
     isKeyComboPressed('meta+s', keyboardEvent)
   ) {
-    onSave();
+    onSaveValue(value);
     keyboardEvent.preventDefault();
     return;
   }
@@ -66,7 +69,7 @@ export const handleKeyDown = (
     isKeyComboTracked('enter', keyListeners) &&
     isKeyComboPressed('enter', keyboardEvent)
   ) {
-    onSave();
+    onSaveValue(value);
     return;
   }
 

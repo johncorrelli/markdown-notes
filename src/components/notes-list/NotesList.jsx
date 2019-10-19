@@ -1,6 +1,6 @@
 // @flow
 import React, {useState} from 'react';
-import CategorySelector from './CategorySelector';
+import CategorySelector from '../category-selector/CategorySelector';
 import NoteCategory from './NoteCategory';
 import {displayNotes} from '../../helpers/display-notes';
 import {getNoteCategories, getNotesByCategory} from '../../helpers/categories';
@@ -8,6 +8,7 @@ import './notes-list.scss';
 
 type Props = {
   downloadNotesUrl: string,
+  noteCategories: Array<Object>,
   notes: Array<Object>,
   onSelectNote: (id: string) => void,
   onCreateNote: () => void,
@@ -17,6 +18,7 @@ type Props = {
 
 const NotesList = ({
   downloadNotesUrl,
+  noteCategories,
   notes,
   onSelectNote,
   onCreateNote,
@@ -38,7 +40,6 @@ const NotesList = ({
     searchKeys
   );
 
-  const allNoteCategories = getNoteCategories(notes);
   const filteredNoteCategories = getNoteCategories(filteredNotes);
 
   return (
@@ -52,8 +53,10 @@ const NotesList = ({
         />
 
         <CategorySelector
-          categories={allNoteCategories}
+          blankOption="All Categories"
+          categories={noteCategories}
           onChange={selected => setSelectedCategory(selected)}
+          value={selectedCategory}
         />
 
         <input

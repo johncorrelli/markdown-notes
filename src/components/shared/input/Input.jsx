@@ -6,7 +6,7 @@ type Props = {
   keyListeners: Array<string>,
   name: string,
   onChange: (value: string) => void,
-  onSave: () => void,
+  onSave: (value: string) => void,
   placeholderText?: string,
   tagName?: string,
   value: ?string,
@@ -23,10 +23,14 @@ const Input = ({
 }: Props) => {
   const TagName = tagName || 'input';
 
+  const onBlur = value => {
+    return onSave(value);
+  };
+
   return (
     <TagName
       name={name}
-      onBlur={onSave}
+      onBlur={e => onBlur(e.target.value)}
       onChange={e => onChange(e.target.value)}
       onKeyDown={e => handleKeyDown(e, keyListeners, onChange, onSave)}
       placeholder={placeholderText}
