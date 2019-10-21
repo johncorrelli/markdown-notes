@@ -71,4 +71,17 @@
       font-size:  $font-size * 2.5;
     }
   }
+
+  &.presenter-dark {
+    left: 0;
+
+    .column {
+      background: $background-color-dark;
+    }
+
+    .markdown-body * {
+      color: $background-color-light;
+      font-size:  $font-size * 2.5;
+    }
+  }
 }

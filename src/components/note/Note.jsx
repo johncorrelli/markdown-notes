@@ -8,6 +8,7 @@ import {
   LAYOUT_MARKDOWN,
   LAYOUT_SPLIT,
   LAYOUT_PRESENTER,
+  LAYOUT_PRESENTER_DARK,
 } from '../../constants/layout';
 import syntaxHighlighting from '../../helpers/syntax-highlighting';
 import {
@@ -43,7 +44,7 @@ const Note = ({
   const noteValue = note && note.value;
   const [value, setValue] = useState(noteValue || '');
 
-  const isPresenter = layout === LAYOUT_PRESENTER;
+  const isPresenter = layout === LAYOUT_PRESENTER || layout === LAYOUT_PRESENTER_DARK;
   const showEdit =
     layout === LAYOUT_EDIT || layout === LAYOUT_SPLIT || isPresenter;
   const showMarkdown =

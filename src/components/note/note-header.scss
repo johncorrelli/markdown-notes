@@ -1,6 +1,6 @@
 @import '../../styles/variables';
 
-$category-width: calc(100% - 120px);
+$category-width: calc(100% - #{$toggle-width} - #{$padding});
 
 .note-header {
   background: $background-color-dark;
