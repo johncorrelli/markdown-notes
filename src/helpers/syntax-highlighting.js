@@ -49,14 +49,8 @@ hljs.registerLanguage('shell', shell);
 hljs.registerLanguage('sql', sql);
 hljs.registerLanguage('xml', xml);
 
-export default function syntaxHighlighting(string, lang) {
-  if (!lang || !hljs.getLanguage(lang)) {
-    return '';
-  }
-
-  try {
-    return hljs.highlight(lang, string).value;
-  } catch (err) {
-    return '';
+export default function highlightBlock(element) {
+  if (element) {
+    hljs.highlightBlock(element);
   }
 }
