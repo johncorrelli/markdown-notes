@@ -2,13 +2,12 @@
 import React, {useEffect, useState} from 'react';
 import Input from '../shared/input/Input';
 import NoteHeader from './NoteHeader';
-import ReactMarkdown from 'react-markdown';
-import Code from '../shared/renderers/Code';
 import {
   LAYOUT_EDIT,
   LAYOUT_MARKDOWN,
   LAYOUT_SPLIT,
 } from '../../constants/layout';
+import Markdown from '../shared/markdown/Markdown';
 
 import './note.scss';
 import 'github-markdown-css';
@@ -93,12 +92,7 @@ const Note = ({note, noteCategories, onDelete, onSave}: Props) => {
 
         {showMarkdown && (
           <div className="view-note">
-            <ReactMarkdown
-              className="markdown-body"
-              source={value || ''}
-              linkTarget="_blank"
-              renderers={{code: Code}}
-            />
+            <Markdown value={value} onChange={onSaveNote} />
           </div>
         )}
       </div>

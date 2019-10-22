@@ -2,8 +2,9 @@
 import React, {useState} from 'react';
 import ReactMarkdown from 'react-markdown';
 import {EMPTY_CATEGORY_NAME} from '../../constants/categories';
-import './import-notes.scss';
 import Code from '../shared/renderers/Code';
+
+import './import-notes.scss';
 
 type Props = {
   onNotImportingNotes: () => void,
