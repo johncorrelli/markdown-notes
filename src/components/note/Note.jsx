@@ -2,13 +2,12 @@
 import React, {useEffect, useState} from 'react';
 import Input from '../shared/input/Input';
 import NoteHeader from './NoteHeader';
-import MarkdownRenderer from 'react-markdown-renderer';
 import {
   LAYOUT_EDIT,
   LAYOUT_MARKDOWN,
   LAYOUT_SPLIT,
 } from '../../constants/layout';
-import syntaxHighlighting from '../../helpers/syntax-highlighting';
+import Markdown from '../shared/markdown/Markdown';
 
 import './note.scss';
 import 'github-markdown-css';
@@ -49,10 +48,6 @@ const Note = ({note, noteCategories, onDelete, onSave}: Props) => {
 
   const onSaveNote = nextValue => {
     onUpdateNote({value: nextValue});
-  };
-
-  const renderCodeBlock = (string, lang) => {
-    return syntaxHighlighting(string, lang);
   };
 
   if (!note) {
@@ -97,18 +92,7 @@ const Note = ({note, noteCategories, onDelete, onSave}: Props) => {
 
         {showMarkdown && (
           <div className="view-note">
-            <MarkdownRenderer
-              className="markdown-body"
-              markdown={value || ''}
-              options={{
-                breaks: true,
-                highlight: (string, lang) => {
-                  return renderCodeBlock(string, lang);
-                },
-                linkify: true,
-                linkTarget: '_blank',
-              }}
-            />
+            <Markdown value={value} onChange={onSaveNote} />
           </div>
         )}
       </div>

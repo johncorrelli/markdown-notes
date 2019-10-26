@@ -1,0 +1,23 @@
+@import '../../../styles/variables.scss';
+
+.checkbox {
+  align-items: flex-start;
+  display: flex;
+  list-style: none;
+  
+  &__toggle {
+    background-color: #fff;
+    border: 1px solid $button-background-color;
+    border-radius: 25%;
+    box-sizing: content-box !important;
+    cursor: pointer;
+    height: 1em;
+    margin-right: 5px;
+    width: 1em;
+    
+    &--checked {
+      background: #fff url('../../../assets/check.svg') no-repeat center;
+      background-size: 0.75em;
+    }
+  }
+}

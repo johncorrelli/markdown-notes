@@ -1,8 +1,9 @@
 // @flow
 import React, {useState} from 'react';
-import MarkdownRenderer from 'react-markdown-renderer';
-import syntaxHighlighting from '../../helpers/syntax-highlighting';
+import ReactMarkdown from 'react-markdown';
 import {EMPTY_CATEGORY_NAME} from '../../constants/categories';
+import Code from '../shared/renderers/Code';
+
 import './import-notes.scss';
 
 type Props = {
@@ -68,14 +69,11 @@ const ImportNotes = ({onNotImportingNotes, onSaveNote}: Props) => {
 
   const importNotePreview = () => {
     return (
-      <MarkdownRenderer
+      <ReactMarkdown
         className="markdown-body"
-        markdown={importNoteShape}
-        options={{
-          breaks: true,
-          highlight: (string, lang) => {
-            return syntaxHighlighting(string, lang);
-          },
+        source={importNoteShape}
+        renderers={{
+          code: Code,
         }}
       />
     );
