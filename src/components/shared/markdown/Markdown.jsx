@@ -1,6 +1,7 @@
 //@flow
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import breaks from 'remark-breaks';
 import Code from '../renderers/Code';
 import ListItem from '../renderers/ListItem';
 import {updateCheckbox} from './checkbox-helpers';
@@ -26,6 +27,7 @@ const Markdown = (props: Props) => {
       rawSourcePos={true}
       linkTarget="_blank"
       renderers={{code: Code, listItem: renderListItem}}
+      plugins={[breaks]}
     />
   );
 };
