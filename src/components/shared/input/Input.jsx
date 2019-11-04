@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import {handleKeyDown} from '../../../helpers/keyboard-events';
+import {handleKeyDown} from '../../../helpers/keyboard-events/keyboard-events';
 
 type Props = {
   keyListeners: Array<string>,
