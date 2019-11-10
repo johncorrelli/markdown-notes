@@ -75,7 +75,6 @@ const NoteHeader = ({
     setIsAddingNewCategory(false);
   };
 
-
   return (
     <div className="note-header">
       <div className="title">

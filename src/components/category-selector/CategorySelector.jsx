@@ -31,9 +31,8 @@ const CategorySelector = ({
         .filter(c => c !== null)
         .sort()
         .map((category, index) => {
-          return <option key={index}>{category}</option>
-        })
-      }
+          return <option key={index}>{category}</option>;
+        })}
     </select>
   );
 };
