@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
+    "dropbox": "^4.0.30",
     "flow-bin": "^0.98.1",
     "fuse.js": "^3.4.4",
     "github-markdown-css": "^3.0.1",

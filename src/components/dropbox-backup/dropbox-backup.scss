@@ -1,0 +1,13 @@
+.dropbox-backup {
+  .dropbox-logo {
+    background: transparent url('../../assets/dropbox.svg') no-repeat center;
+    display: inline-block;
+    height: 22px;
+    margin-bottom: -7px;
+    width: 22px;
+
+    &.loading {
+      background-image: url('../../assets/loading.svg');
+    }
+  }
+}
