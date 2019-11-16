@@ -15,7 +15,7 @@ const getAccessToken = () => {
 
   const matches = window.location.hash.match(/access_token=(.+?)&/);
   if (matches && matches[1]) {
-    localStorage.setItem('dropbox_access_token', matches[1]);
+    sessionStorage.setItem('dropbox_access_token', matches[1]);
     return matches[1];
   }
 
