@@ -4,6 +4,7 @@ import CategorySelector from '../category-selector/CategorySelector';
 import NoteCategory from './NoteCategory';
 import {displayNotes} from '../../helpers/display-notes';
 import {getNoteCategories, getNotesByCategory} from '../../helpers/categories';
+import DropboxBackup from '../dropbox-backup/DropboxBackup';
 import './notes-list.scss';
 
 type Props = {
@@ -93,6 +94,7 @@ const NotesList = ({
         >
           Export
         </a>
+        <DropboxBackup notes={notes} />
       </div>
     </div>
   );
