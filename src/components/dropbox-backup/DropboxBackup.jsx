@@ -23,7 +23,7 @@ const getAccessToken = () => {
 };
 
 const getAuthUrl = () => {
-  const dbx = new Dropbox({clientId: 'd41ntwo8ou6exgf', fetch});
+  const dbx = new Dropbox({clientId: 'tc24qpb201s456w', fetch});
   return dbx.getAuthenticationUrl(window.location.href);
 };
 
