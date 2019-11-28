@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ImportNotes from './components/import-notes/ImportNotes';
 import NoteList from './components/notes-list/NotesList';
 import Note from './components/note/Note';
@@ -8,39 +8,45 @@ import {getNoteCategories} from './helpers/categories';
 import './styles/app.scss';
 
 function App() {
-  const onCreateNote = () => {
-    const note = onSaveNote({});
+  const onCreateNote = async () => {
+    const note = await onSaveNote({});
 
     onSelectNote(note.id);
   };
 
-  const onDeleteNote = note => {
+  const onDeleteNote = async note => {
     const {id} = note;
 
-    Storage.deleteNote(id);
+    await Storage.deleteNote(id);
+    const newAllNotes = await getNotes();
+
     onSelectNote(null);
-    setAllNotes(getNotes());
+    setAllNotes(newAllNotes);
   };
 
-  const onSelectNote = id => {
-    setSelectedNote(getNote(id));
+  const onSelectNote = async id => {
+    const selectedNote = await getNote(id);
+
+    setSelectedNote(selectedNote);
   };
 
-  const getNote = id => {
-    const note = getNotes().filter(note => {
+  const getNote = async id => {
+    const allNotes = await getNotes();
+
+    const note = allNotes.filter(note => {
       return note.id === id;
     });
 
     return note[0];
   };
 
-  const getNotes = () => {
-    return Storage.getAllNotes();
+  const getNotes = async () => {
+    return await Storage.getAllNotes();
   };
 
-  const onSaveNote = note => {
-    const savedNote = Storage.saveNote(note);
-    const allNotes = getNotes();
+  const onSaveNote = async note => {
+    const savedNote = await Storage.saveNote(note);
+    const allNotes = await getNotes();
 
     setAllNotes(allNotes);
     setNoteCategories(getNoteCategories(allNotes));
@@ -49,12 +55,17 @@ function App() {
     return savedNote;
   };
 
-  const [allNotes, setAllNotes] = useState(getNotes());
+  const [allNotes, setAllNotes] = useState([]);
+  const [noteCategories, setNoteCategories] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
   const [isImportingNotes, setIsImportingNotes] = useState(false);
-  const [noteCategories, setNoteCategories] = useState(
-    getNoteCategories(allNotes)
-  );
+
+  useEffect(() => {
+    getNotes().then(allNotes => {
+      setAllNotes(allNotes);
+      setNoteCategories(getNoteCategories(allNotes));
+    });
+  }, []);
 
   const downloadNotesUrl =
     'data:text/json;charset=utf-8,' +
