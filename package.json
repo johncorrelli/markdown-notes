@@ -16,7 +16,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-markdown": "^4.2.2",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.1",
     "remark-breaks": "^1.0.3",
     "stylelint": "^10.0.1",
     "stylelint-order": "^3.0.0",
