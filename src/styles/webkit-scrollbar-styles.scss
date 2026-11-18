@@ -1,15 +1,25 @@
 @use 'sass:color';
 
-@mixin webkit-scrollbar($background-color) {
+// For themes: scrollbar colors that suit a surface, desaturated and a little
+// (track) or a lot (thumb) darker than its background.
+@function track-color($background) {
+  @return color.adjust($background, $lightness: -3%, $saturation: -50%);
+}
+
+@function thumb-color($background) {
+  @return color.adjust($background, $lightness: -10%, $saturation: -50%);
+}
+
+@mixin webkit-scrollbar($track-color, $thumb-color) {
   &::-webkit-scrollbar {
-    background: color.adjust($background-color, $lightness: -3%, $saturation: -50%);
+    background: $track-color;
     border-radius: 1em;
     height: 8px;
     width: 8px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: color.adjust($background-color, $lightness: -10%, $saturation: -50%);
+    background: $thumb-color;
     border-radius: 1em;
   }
 }

@@ -1,0 +1,59 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'nord';
+
+// Every theme, keyed by the id the theme picker stores. To add a theme, copy
+// _nord.scss, change its values, and register it here and in THEMES
+// (src/constants/themes.ts).
+$themes: (
+  'nord': nord.$theme,
+);
+
+// Used when the page has no data-theme, or one that isn't listed above.
+$default: 'nord';
+
+// The keys every theme must set: the default theme's.
+$keys: map.keys(map.get($themes, $default));
+
+@each $id, $theme in $themes {
+  @each $key in $keys {
+    @if not map.has-key($theme, $key) {
+      @error "Theme \"#{$id}\" is missing \"#{$key}\".";
+    }
+  }
+
+  @each $key in map.keys($theme) {
+    @if not list.index($keys, $key) {
+      @error "Theme \"#{$id}\" sets \"#{$key}\", which the default theme doesn't.";
+    }
+  }
+}
+
+/// A theme setting as a CSS custom property, e.g. `get('text-color')` returns
+/// `var(--text-color)`. Fails the build on a typo.
+@function get($key) {
+  @if not list.index($keys, $key) {
+    @error "Unknown theme setting \"#{$key}\".";
+  }
+
+  @return var(--#{$key});
+}
+
+/// Outputs each theme's settings as CSS custom properties. The default theme
+/// also applies to :root, so the app is styled before a theme is picked.
+@mixin custom-properties {
+  @each $id, $theme in $themes {
+    $selector: ":root[data-theme='#{$id}']";
+
+    @if $id == $default {
+      $selector: ':root, #{$selector}';
+    }
+
+    #{$selector} {
+      @each $key, $value in $theme {
+        --#{$key}: #{meta.inspect($value)};
+      }
+    }
+  }
+}

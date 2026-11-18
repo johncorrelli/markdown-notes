@@ -23,7 +23,7 @@ import shell from 'highlight.js/lib/languages/shell';
 import sql from 'highlight.js/lib/languages/sql';
 import xml from 'highlight.js/lib/languages/xml';
 
-import 'highlight.js/styles/github.css';
+import '../styles/syntax.scss';
 
 hljs.registerLanguage('apache', apache);
 hljs.registerLanguage('bash', bash);

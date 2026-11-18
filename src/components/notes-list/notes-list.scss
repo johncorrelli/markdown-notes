@@ -1,13 +1,14 @@
-@use 'sass:color';
 @use 'sass:math';
 @use '../../styles/variables' as *;
 @use '../../styles/webkit-scrollbar-styles' as *;
 
 $header-height: 145px;
-$footer-height: 55px;
+// One row of theme pills plus the import/export/Dropbox buttons. Raise it if
+// more themes make the pills wrap onto a second row.
+$footer-height: 93px;
 
 .notes-list {
-  background-color: $background-color-dark;
+  background-color: $sidebar-background;
   bottom: 0;
   left: 0;
   overflow: auto;
@@ -30,7 +31,7 @@ $footer-height: 55px;
     position: absolute;
     width: 100%;
 
-    @include webkit-scrollbar($background-color-dark);
+    @include webkit-scrollbar($sidebar-scrollbar-track-color, $sidebar-scrollbar-thumb-color);
   }
 
   .footer {
@@ -46,7 +47,7 @@ $footer-height: 55px;
   }
 
   .create-note {
-    background: $button-background-color;
+    background: $button-background;
     border: none;
     color: $button-text-color;
     cursor: pointer;
@@ -58,7 +59,7 @@ $footer-height: 55px;
     width: 100%;
 
     &:hover {
-      background: color.mix(#000, $button-background-color, 20%);
+      background: $button-hover-background;
     }
   }
 
@@ -77,7 +78,7 @@ $footer-height: 55px;
   }
 
   .note-category-heading {
-    background: color.adjust($background-color-dark, $lightness: -2%);
+    background: $category-heading-background;
     display: block;
     font-size: 0.8em;
     font-style: italic;
@@ -89,12 +90,12 @@ $footer-height: 55px;
     padding: $padding;
 
     &:nth-of-type(odd) {
-      background: color.adjust($background-color-dark, $lightness: 2%);
+      background: $note-stripe-background;
     }
 
     &:hover, &.selected {
-      background: $selected-note-highlight;
-      color: $background-color-dark;
+      background: $selected-note-background;
+      color: $selected-note-text-color;
     }
 
     .note-title {

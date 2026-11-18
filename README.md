@@ -18,6 +18,24 @@ npm start
 Then open [http://localhost:3000](http://localhost:3000). The dev server stays on
 port 3000 because that's the redirect URI registered for the Dropbox backup.
 
+## Themes
+
+Colors and fonts come from the themes in `src/styles/themes/`. Each theme is a
+Sass map of settings (`text-color`, `sidebar-background`, `code-font-family`,
+...) that compiles to CSS custom properties, and styles use them through the
+variables in `src/styles/variables.scss`. The picker at the bottom of the
+sidebar switches themes and remembers the choice in the browser. Nord is the
+default.
+
+To add a theme:
+
+1. Copy `src/styles/themes/_nord.scss` and change its values. The build fails
+   if a theme leaves out a setting or adds one the others don't have.
+2. Register it in `$themes` in `src/styles/themes/_index.scss` and in `THEMES`
+   in `src/constants/themes.ts`. A test checks that the two lists match.
+3. If it uses web fonts, load them, the way `index.html` loads Fira Mono from
+   Typekit.
+
 ## Scripts
 
 | Command             | What it does                                                            |

@@ -3,7 +3,7 @@
 $import-padding: 10%;
 
 .import-notes {
-    box-shadow: $toggle-background 0 0 10px;
+    box-shadow: $import-shadow-color 0 0 10px;
     display: flex;
     inset: $import-padding;
     position: fixed;
@@ -14,7 +14,7 @@ $import-padding: 10%;
     }
 
     .instructions {
-        background: $import-left-side-background;
+        background: $import-instructions-background;
         box-sizing: border-box;
         color: $text-color;
         flex: 1;
@@ -26,6 +26,7 @@ $import-padding: 10%;
     .import {
         flex: 2;
         flex-direction: column;
+        font-family: $code-font-family;
         padding: 20px;
     }
 }

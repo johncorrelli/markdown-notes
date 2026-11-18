@@ -5,6 +5,7 @@ import NoteCategory from './NoteCategory';
 import {displayNotes} from '../../helpers/display-notes';
 import {getNoteCategories, getNotesByCategory} from '../../helpers/categories';
 import DropboxBackup from '../dropbox-backup/DropboxBackup';
+import ThemePicker from '../theme-picker/ThemePicker';
 import type {Note} from '../../types';
 import './notes-list.scss';
 
@@ -85,6 +86,7 @@ const NotesList = ({
       </div>
 
       <div className="footer">
+        <ThemePicker />
         <button className="secondary-button" onClick={onImportNotes}>
           Import
         </button>
