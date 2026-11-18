@@ -1,5 +1,7 @@
-@import '../../styles/variables';
-@import '../../styles/webkit-scrollbar-styles';
+@use 'sass:color';
+@use 'sass:math';
+@use '../../styles/variables' as *;
+@use '../../styles/webkit-scrollbar-styles' as *;
 
 $header-height: 145px;
 $footer-height: 55px;
@@ -23,13 +25,9 @@ $footer-height: 55px;
   }
 
   .scrollable-content {
-    bottom: $footer-height;
-    left: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
+    inset: $header-height 0 $footer-height 0;
+    overflow: hidden auto;
     position: absolute;
-    right: 0;
-    top: $header-height;
     width: 100%;
 
     @include webkit-scrollbar($background-color-dark);
@@ -60,7 +58,7 @@ $footer-height: 55px;
     width: 100%;
 
     &:hover {
-      background: mix(#000000, $button-background-color, 20);
+      background: color.mix(#000, $button-background-color, 20%);
     }
   }
 
@@ -74,16 +72,16 @@ $footer-height: 55px;
     border: none;
     display: block;
     margin: $padding;
-    padding: ($padding / 4) ($padding / 2);
+    padding: math.div($padding, 4) math.div($padding, 2);
     width: calc(100% - #{$padding * 3});
   }
 
   .note-category-heading {
-    background: darken($background-color-dark, 2%);
+    background: color.adjust($background-color-dark, $lightness: -2%);
     display: block;
-    padding: 5px $padding;
     font-size: 0.8em;
     font-style: italic;
+    padding: 5px $padding;
   }
 
   .note-preview {
@@ -91,7 +89,7 @@ $footer-height: 55px;
     padding: $padding;
 
     &:nth-of-type(odd) {
-      background: lighten($background-color-dark, 2%);
+      background: color.adjust($background-color-dark, $lightness: 2%);
     }
 
     &:hover, &.selected {

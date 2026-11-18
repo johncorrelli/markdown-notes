@@ -1,6 +1,8 @@
-@import 'variables.scss';
-@import 'webkit-scrollbar-styles';
-@import 'utils.scss';
+@use 'sass:color';
+@use 'variables' as *;
+@use 'webkit-scrollbar-styles' as *;
+@use 'utils';
+@use 'markdown';
 
 body {
   color: $text-color;
@@ -16,17 +18,17 @@ body {
 
   .secondary-button {
     background: $secondary-button-background;
-    color: $secondary-button-text-color;
-    cursor: pointer;
     border: none;
     border-radius: 3px;
+    color: $secondary-button-text-color;
+    cursor: pointer;
     margin: 2px;
     outline: none;
     padding: 5px $padding;
     text-decoration: none;
 
     &:hover {
-      background: lighten($secondary-button-background, 10%);
+      background: color.adjust($secondary-button-background, $lightness: 10%);
     }
   }
 }

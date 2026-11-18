@@ -1,0 +1,18 @@
+@use 'variables' as *;
+
+// Prefixed with `body` so these win over the library's `.markdown-body ...` rules.
+body .markdown-body {
+  // github-markdown-css v5 paints a white background; let the preview's own
+  // background show through, like v3 did.
+  background-color: transparent;
+
+  // Render code in the app's monospace font, like the editor. Without this,
+  // highlighted tokens use it (via `body *`) but plain text falls back to the
+  // OS monospace font, mixing two fonts in one line.
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: $font-family;
+  }
+}

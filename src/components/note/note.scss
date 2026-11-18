@@ -1,14 +1,11 @@
-@import '../../styles/variables';
-@import '../../styles/webkit-scrollbar-styles';
+@use '../../styles/variables' as *;
+@use '../../styles/webkit-scrollbar-styles' as *;
 
 .selected-note {
-  bottom: 0;
   display: flex;
   flex-direction: column;
-  left: $left-width;
+  inset: 0 0 0 $left-width;
   position: absolute;
-  right: 0;
-  top: 0;
 
   .note-details {
     align-items: stretch;
