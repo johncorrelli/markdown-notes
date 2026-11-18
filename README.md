@@ -29,7 +29,7 @@ sidebar switches themes and remembers the choice in the browser's localStorage.
 | Theme     | Look                                                                                   |
 | --------- | -------------------------------------------------------------------------------------- |
 | Nord      | The original dark look, on the [Nord](https://www.nordtheme.com) palette. The default. |
-| TeamGantt | Dark moss greens from the TeamGantt app's dark mode, with a white preview.             |
+| TeamGantt | Dark moss greens from the TeamGantt app's dark mode, with a Sandstone preview.         |
 
 Code highlighting uses GitHub's colors in every theme. Those live once in
 `src/styles/themes/_github.scss`, along with GitHub's markdown colors, and the
