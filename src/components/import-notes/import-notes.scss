@@ -16,7 +16,7 @@ $import-padding: 10%;
     .instructions {
         background: $import-instructions-background;
         box-sizing: border-box;
-        color: $text-color;
+        color: $import-instructions-text-color;
         flex: 1;
         flex-direction: column;
         min-width: 300px;

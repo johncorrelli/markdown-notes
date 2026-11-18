@@ -18,10 +18,10 @@ describe('getSavedTheme', () => {
   });
 
   it('returns the saved theme', () => {
-    saveTheme('nord');
+    saveTheme('teamgantt');
 
-    expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toBe('nord');
-    expect(getSavedTheme()).toBe('nord');
+    expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toBe('teamgantt');
+    expect(getSavedTheme()).toBe('teamgantt');
   });
 
   it('ignores a saved theme that no longer exists', () => {
@@ -44,8 +44,8 @@ describe('isTheme', () => {
 
 describe('applyTheme', () => {
   it('sets data-theme on the html element', () => {
-    applyTheme('nord');
+    applyTheme('teamgantt');
 
-    expect(document.documentElement.dataset.theme).toBe('nord');
+    expect(document.documentElement.dataset.theme).toBe('teamgantt');
   });
 });

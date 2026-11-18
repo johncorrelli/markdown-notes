@@ -24,8 +24,16 @@ Colors and fonts come from the themes in `src/styles/themes/`. Each theme is a
 Sass map of settings (`text-color`, `sidebar-background`, `code-font-family`,
 ...) that compiles to CSS custom properties, and styles use them through the
 variables in `src/styles/variables.scss`. The picker at the bottom of the
-sidebar switches themes and remembers the choice in the browser. Nord is the
-default.
+sidebar switches themes and remembers the choice in the browser's localStorage.
+
+| Theme     | Look                                                                                   |
+| --------- | -------------------------------------------------------------------------------------- |
+| Nord      | The original dark look, on the [Nord](https://www.nordtheme.com) palette. The default. |
+| TeamGantt | Dark moss greens from the TeamGantt app's dark mode, with a white preview.             |
+
+Code highlighting uses GitHub's colors in every theme. Those live once in
+`src/styles/themes/_github.scss`, along with GitHub's markdown colors, and the
+themes merge them in.
 
 To add a theme:
 

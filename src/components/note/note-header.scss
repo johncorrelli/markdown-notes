@@ -4,6 +4,8 @@ $category-width: calc(100% - 120px);
 
 .note-header {
   background: $header-background;
+  // An inset shadow, not a border, so the divider doesn't change the layout.
+  box-shadow: inset 0 -1px 0 $divider-color;
   box-sizing: border-box;
   padding: $padding ($padding * 2);
   position: relative;

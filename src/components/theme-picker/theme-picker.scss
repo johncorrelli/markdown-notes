@@ -1,8 +1,9 @@
 @use 'sass:math';
 @use '../../styles/variables' as *;
 
-// The selected pill looks like the primary button and the others like outlined
-// secondary buttons, so each theme styles them through its button colors.
+// The selected pill looks like the primary button; the others are outlined in
+// the secondary button color and fill with it on hover. Each theme styles them
+// through its button and text colors.
 .theme-picker {
   align-items: center;
   display: flex;
@@ -13,7 +14,7 @@
   &__pill {
     border: 1px solid $secondary-button-background;
     border-radius: 999px;
-    color: $secondary-button-text-color;
+    color: $text-color;
     cursor: pointer;
     font-size: 0.85em;
     padding: 2px 10px;
@@ -21,6 +22,7 @@
 
     &:hover {
       background: $secondary-button-background;
+      color: $secondary-button-text-color;
     }
 
     &:has(input:focus-visible) {

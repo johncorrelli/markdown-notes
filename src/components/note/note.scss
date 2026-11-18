@@ -54,4 +54,9 @@
       width: calc(100% - #{$padding * 4});
     }
   }
+
+  // Divider between the editor and preview when both are showing.
+  .edit-note + .view-note {
+    box-shadow: inset 1px 0 0 $divider-color;
+  }
 }

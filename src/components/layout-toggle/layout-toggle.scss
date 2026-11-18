@@ -11,6 +11,7 @@
 
   li {
     background: $toggle-background;
+    color: $toggle-text-color;
     cursor: pointer;
     flex: 1;
     padding: 5px 0;
@@ -18,6 +19,7 @@
 
     &:hover, &.selected {
       background: $toggle-selected-background;
+      color: $toggle-selected-text-color;
     }
   }
 }

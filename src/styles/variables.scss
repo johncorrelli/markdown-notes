@@ -15,6 +15,7 @@ $code-font-family: themes.get('code-font-family');
 $text-color: themes.get('text-color');
 $scrollbar-track-color: themes.get('scrollbar-track-color');
 $scrollbar-thumb-color: themes.get('scrollbar-thumb-color');
+$divider-color: themes.get('divider-color');
 
 $button-background: themes.get('button-background');
 $button-hover-background: themes.get('button-hover-background');
@@ -30,13 +31,16 @@ $sidebar-background: themes.get('sidebar-background');
 $sidebar-scrollbar-track-color: themes.get('sidebar-scrollbar-track-color');
 $sidebar-scrollbar-thumb-color: themes.get('sidebar-scrollbar-thumb-color');
 $category-heading-background: themes.get('category-heading-background');
+$category-heading-text-color: themes.get('category-heading-text-color');
 $note-stripe-background: themes.get('note-stripe-background');
 $selected-note-background: themes.get('selected-note-background');
 $selected-note-text-color: themes.get('selected-note-text-color');
 
 $header-background: themes.get('header-background');
 $toggle-background: themes.get('toggle-background');
+$toggle-text-color: themes.get('toggle-text-color');
 $toggle-selected-background: themes.get('toggle-selected-background');
+$toggle-selected-text-color: themes.get('toggle-selected-text-color');
 
 $editor-background: themes.get('editor-background');
 $editor-scrollbar-track-color: themes.get('editor-scrollbar-track-color');
@@ -48,6 +52,7 @@ $checkbox-border-color: themes.get('checkbox-border-color');
 $checkbox-check-color: themes.get('checkbox-check-color');
 
 $import-instructions-background: themes.get('import-instructions-background');
+$import-instructions-text-color: themes.get('import-instructions-text-color');
 $import-shadow-color: themes.get('import-shadow-color');
 
 $markdown-text-color: themes.get('markdown-text-color');

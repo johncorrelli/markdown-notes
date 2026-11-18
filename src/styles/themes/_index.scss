@@ -2,12 +2,14 @@
 @use 'sass:map';
 @use 'sass:meta';
 @use 'nord';
+@use 'teamgantt';
 
 // Every theme, keyed by the id the theme picker stores. To add a theme, copy
 // _nord.scss, change its values, and register it here and in THEMES
 // (src/constants/themes.ts).
 $themes: (
   'nord': nord.$theme,
+  'teamgantt': teamgantt.$theme,
 );
 
 // Used when the page has no data-theme, or one that isn't listed above.
