@@ -1,17 +1,30 @@
-@import '../../styles/variables';
-@import '../../styles/webkit-scrollbar-styles';
+@use 'sass:math';
+@use '../../styles/variables' as *;
+@use '../../styles/webkit-scrollbar-styles' as *;
 
 $header-height: 145px;
-$footer-height: 55px;
+// One row of theme pills plus the import/export/Dropbox buttons. Raise it if
+// more themes make the pills wrap onto a second row.
+$footer-height: 93px;
 
 .notes-list {
-  background-color: $background-color-dark;
+  background-color: $sidebar-background;
   bottom: 0;
   left: 0;
   overflow: auto;
   position: absolute;
   top: 0;
   width: $left-width;
+
+  // Divider along the right edge, drawn above the list's own backgrounds.
+  &::after {
+    background: $divider-color;
+    content: '';
+    inset: 0 0 0 auto;
+    pointer-events: none;
+    position: absolute;
+    width: 1px;
+  }
 
   .header {
     height: $header-height;
@@ -23,16 +36,12 @@ $footer-height: 55px;
   }
 
   .scrollable-content {
-    bottom: $footer-height;
-    left: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
+    inset: $header-height 0 $footer-height 0;
+    overflow: hidden auto;
     position: absolute;
-    right: 0;
-    top: $header-height;
     width: 100%;
 
-    @include webkit-scrollbar($background-color-dark);
+    @include webkit-scrollbar($sidebar-scrollbar-track-color, $sidebar-scrollbar-thumb-color);
   }
 
   .footer {
@@ -48,7 +57,7 @@ $footer-height: 55px;
   }
 
   .create-note {
-    background: $button-background-color;
+    background: $button-background;
     border: none;
     color: $button-text-color;
     cursor: pointer;
@@ -60,7 +69,7 @@ $footer-height: 55px;
     width: 100%;
 
     &:hover {
-      background: mix(#000000, $button-background-color, 20);
+      background: $button-hover-background;
     }
   }
 
@@ -74,16 +83,17 @@ $footer-height: 55px;
     border: none;
     display: block;
     margin: $padding;
-    padding: ($padding / 4) ($padding / 2);
+    padding: math.div($padding, 4) math.div($padding, 2);
     width: calc(100% - #{$padding * 3});
   }
 
   .note-category-heading {
-    background: darken($background-color-dark, 2%);
+    background: $category-heading-background;
+    color: $category-heading-text-color;
     display: block;
-    padding: 5px $padding;
     font-size: 0.8em;
     font-style: italic;
+    padding: 5px $padding;
   }
 
   .note-preview {
@@ -91,12 +101,12 @@ $footer-height: 55px;
     padding: $padding;
 
     &:nth-of-type(odd) {
-      background: lighten($background-color-dark, 2%);
+      background: $note-stripe-background;
     }
 
     &:hover, &.selected {
-      background: $selected-note-highlight;
-      color: $background-color-dark;
+      background: $selected-note-background;
+      color: $selected-note-text-color;
     }
 
     .note-title {

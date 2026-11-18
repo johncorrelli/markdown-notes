@@ -1,13 +1,13 @@
-@import '../../../styles/variables.scss';
+@use '../../../styles/variables' as *;
 
 .checkbox {
   align-items: flex-start;
   display: flex;
   list-style: none;
-  
+
   &__toggle {
-    background-color: #fff;
-    border: 1px solid $button-background-color;
+    background-color: $checkbox-background;
+    border: 1px solid $checkbox-border-color;
     border-radius: 25%;
     box-sizing: content-box !important;
     cursor: pointer;
@@ -15,10 +15,15 @@
     height: 1em;
     margin-right: 5px;
     width: 1em;
-    
-    &--checked {
-      background: #fff url('../../../assets/check.svg') no-repeat center;
-      background-size: 0.75em;
+
+    // The check mark is drawn as a mask so the theme can color it.
+    &--checked::after {
+      background-color: $checkbox-check-color;
+      content: '';
+      display: block;
+      height: 100%;
+      mask: url('../../../assets/check.svg') no-repeat center / 0.75em;
+      width: 100%;
     }
   }
 }

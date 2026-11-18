@@ -1,15 +1,17 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as *;
 
 $category-width: calc(100% - 120px);
 
 .note-header {
-  background: $background-color-dark;
+  background: $header-background;
+  // An inset shadow, not a border, so the divider doesn't change the layout.
+  box-shadow: inset 0 -1px 0 $divider-color;
   box-sizing: border-box;
   padding: $padding ($padding * 2);
   position: relative;
 
   input {
-    background: $background-color-dark;
+    background: $header-background;
     border: none;
     color: $text-color;
     display: block;
@@ -19,7 +21,7 @@ $category-width: calc(100% - 120px);
   }
 
   .category select {
-    background: $background-color-dark;
+    background: $header-background;
     border: none;
     color: $text-color;
     cursor: pointer;
@@ -45,7 +47,7 @@ $category-width: calc(100% - 120px);
     &:hover {
       background: $delete-color;
       border-style: solid;
-      color: #fff;
+      color: $delete-hover-text-color;
       cursor: pointer;
     }
   }

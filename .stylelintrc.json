@@ -1,0 +1,23 @@
+{
+  "defaultSeverity": "error",
+  "customSyntax": "postcss-scss",
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "max-nesting-depth": 3,
+    "no-duplicate-selectors": true,
+    "comment-no-empty": true,
+    "rule-empty-line-before": ["always", { "except": ["first-nested"], "ignore": ["after-comment", "inside-block"] }],
+    "selector-max-id": 0,
+    "selector-type-case": "lower",
+    "function-calc-no-unspaced-operator": true,
+    "function-name-case": "lower",
+    "shorthand-property-no-redundant-values": true,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-block-no-redundant-longhand-properties": true,
+    "declaration-block-no-shorthand-property-overrides": true,
+    "length-zero-no-unit": true,
+    "order/properties-alphabetical-order": true
+  }
+}

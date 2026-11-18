@@ -1,13 +1,17 @@
+@use '../../styles/variables' as *;
+
 .dropbox-backup {
+  // The logo and spinner are drawn as masks so the theme can color them.
   .dropbox-logo {
-    background: transparent url('../../assets/dropbox.svg') no-repeat center;
+    background-color: $secondary-button-icon-color;
     display: inline-block;
     height: 22px;
     margin-bottom: -7px;
+    mask: url('../../assets/dropbox.svg') no-repeat center;
     width: 22px;
 
     &.loading {
-      background-image: url('../../assets/loading.svg');
+      mask-image: url('../../assets/loading.svg');
     }
   }
 }

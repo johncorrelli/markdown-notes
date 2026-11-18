@@ -1,6 +1,10 @@
-@import 'variables.scss';
-@import 'webkit-scrollbar-styles';
-@import 'utils.scss';
+@use 'themes';
+@use 'variables' as *;
+@use 'webkit-scrollbar-styles' as *;
+@use 'utils';
+@use 'markdown';
+
+@include themes.custom-properties;
 
 body {
   color: $text-color;
@@ -11,22 +15,22 @@ body {
     font-family: $font-family;
     font-size: $font-size;
 
-    @include webkit-scrollbar($background-color-light);
+    @include webkit-scrollbar($scrollbar-track-color, $scrollbar-thumb-color);
   }
 
   .secondary-button {
     background: $secondary-button-background;
-    color: $secondary-button-text-color;
-    cursor: pointer;
     border: none;
     border-radius: 3px;
+    color: $secondary-button-text-color;
+    cursor: pointer;
     margin: 2px;
     outline: none;
     padding: 5px $padding;
     text-decoration: none;
 
     &:hover {
-      background: lighten($secondary-button-background, 10%);
+      background: $secondary-button-hover-background;
     }
   }
 }

@@ -1,14 +1,11 @@
-@import '../../styles/variables';
-@import '../../styles/webkit-scrollbar-styles';
+@use '../../styles/variables' as *;
+@use '../../styles/webkit-scrollbar-styles' as *;
 
 .selected-note {
-  bottom: 0;
   display: flex;
   flex-direction: column;
-  left: $left-width;
+  inset: 0 0 0 $left-width;
   position: absolute;
-  right: 0;
-  top: 0;
 
   .note-details {
     align-items: stretch;
@@ -20,7 +17,7 @@
   }
 
   .edit-note {
-    background-color: $background-color-medium;
+    background-color: $editor-background;
     display: flex;
     flex: 1;
     flex-flow: column;
@@ -28,16 +25,17 @@
     padding: 0;
 
     textarea {
-      background: $background-color-medium;
+      background: $editor-background;
       border: none;
       color: $text-color;
+      font-family: $code-font-family;
       height: calc(100% - #{$padding * 4});
       margin: 0;
       padding: $padding * 2;
       resize: none;
       width: calc(100% - #{$padding * 4});
 
-      @include webkit-scrollbar($background-color-medium);
+      @include webkit-scrollbar($editor-scrollbar-track-color, $editor-scrollbar-thumb-color);
 
       &:focus {
         outline: none;
@@ -46,7 +44,7 @@
   }
 
   .view-note {
-    background: $background-color-light;
+    background: $preview-background;
     box-sizing: border-box;
     flex: 1;
     overflow: auto;
@@ -55,5 +53,10 @@
       padding: $padding * 2;
       width: calc(100% - #{$padding * 4});
     }
+  }
+
+  // Divider between the editor and preview when both are showing.
+  .edit-note + .view-note {
+    box-shadow: inset 1px 0 0 $divider-color;
   }
 }

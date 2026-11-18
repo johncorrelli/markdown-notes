@@ -1,0 +1,100 @@
+@use 'sass:color';
+@use 'sass:map';
+@use '../webkit-scrollbar-styles' as scrollbar;
+@use 'github';
+
+// TeamGantt: a dark theme in TeamGantt's moss greens, from the dark-mode
+// ("theme-dark") design tokens in app.teamgantt.com's stylesheet. Like Nord,
+// the preview stays light so rendered notes read like a page. Every theme sets
+// the same keys; see _index.scss.
+
+$moss-300: #9bada5; // the app's primary color in dark mode
+$moss-500: #3f6152; // its primary color in light mode
+$moss-600: #355145;
+$moss-700: #2b4238;
+$moss-800: #22342c;
+$moss-900: #1c2b24;
+$moss-950: #121b17;
+
+$neutral-50: #fbfaf8;
+$neutral-100: #f7f5f2; // dark mode's default text color
+$neutral-200: #e9e6e1;
+$neutral-300: #d7d3cd;
+$neutral-500: #837e77;
+$neutral-800: #302e2a;
+$neutral-900: #23211e;
+
+$red-300: #e0937b; // dark mode's danger color
+$white: #fff;
+
+$theme: map.merge(
+  (
+    // Fonts. Web fonts also need loading, like the Typekit stylesheet in index.html.
+    'font-family': ('fira-mono', monospace),
+    'code-font-family': ('fira-mono', monospace),
+
+    // Page
+    'text-color': $neutral-100,
+    'scrollbar-track-color': scrollbar.track-color($white),
+    'scrollbar-thumb-color': scrollbar.thumb-color($white),
+    // Lines between the sidebar, header, editor and preview.
+    'divider-color': $moss-800,
+
+    // Buttons
+    'button-background': $moss-500,
+    'button-hover-background': $moss-600,
+    'button-text-color': $neutral-50,
+    'secondary-button-background': $moss-800,
+    'secondary-button-hover-background': $moss-700,
+    'secondary-button-text-color': $neutral-100,
+    'secondary-button-icon-color': $neutral-100,
+    'delete-color': $red-300,
+    'delete-hover-text-color': $moss-950,
+
+    // Notes list sidebar
+    'sidebar-background': $moss-950,
+    'sidebar-scrollbar-track-color': scrollbar.track-color($moss-950),
+    'sidebar-scrollbar-thumb-color': scrollbar.thumb-color($moss-950),
+    'category-heading-background': color.adjust($moss-950, $lightness: -2%),
+    'category-heading-text-color': $moss-300,
+    'note-stripe-background': color.adjust($moss-950, $lightness: 2%),
+    'selected-note-background': $moss-700,
+    'selected-note-text-color': $neutral-50,
+
+    // Note header
+    'header-background': $moss-950,
+    'toggle-background': $moss-800,
+    'toggle-text-color': $neutral-200,
+    'toggle-selected-background': $moss-500,
+    'toggle-selected-text-color': $neutral-50,
+
+    // Editor (moss) and preview (white, like a page)
+    'editor-background': $moss-900,
+    'editor-scrollbar-track-color': scrollbar.track-color($moss-900),
+    'editor-scrollbar-thumb-color': scrollbar.thumb-color($moss-900),
+    'preview-background': $white,
+
+    // Task-list checkboxes
+    'checkbox-background': $white,
+    'checkbox-border-color': $moss-500,
+    'checkbox-check-color': $moss-500,
+
+    // Import dialog
+    'import-instructions-background': $moss-500,
+    'import-instructions-text-color': $neutral-50,
+    'import-shadow-color': color.change(#000, $alpha: 0.5),
+
+    // Rendered markdown, on the white preview
+    'markdown-text-color': $neutral-900,
+    'markdown-muted-text-color': $neutral-500,
+    'markdown-link-color': $moss-500,
+    'markdown-border-color': $neutral-300,
+    'markdown-muted-border-color': $neutral-200,
+    'markdown-code-background': color.change($neutral-800, $alpha: 0.08),
+    'markdown-code-block-background': $neutral-100,
+    'markdown-table-row-background': $white,
+    'markdown-table-alt-row-background': $neutral-100,
+  ),
+  // Code highlighting uses GitHub's colors, like every theme.
+  github.$syntax
+);

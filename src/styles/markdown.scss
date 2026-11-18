@@ -1,0 +1,88 @@
+@use 'variables' as *;
+
+// Colors github-markdown-css with the theme. Prefixed with `body` so these win
+// over the library's `.markdown-body ...` rules.
+body .markdown-body {
+  // The library paints a white background; let the preview's show through.
+  background-color: transparent;
+  color: $markdown-text-color;
+
+  a {
+    color: $markdown-link-color;
+  }
+
+  h1,
+  h2 {
+    border-bottom-color: $markdown-muted-border-color;
+  }
+
+  h6 {
+    color: $markdown-muted-text-color;
+  }
+
+  hr {
+    background-color: $markdown-border-color;
+    border-bottom-color: $markdown-muted-border-color;
+  }
+
+  blockquote {
+    border-left-color: $markdown-border-color;
+    color: $markdown-muted-text-color;
+  }
+
+  code,
+  tt {
+    background-color: $markdown-code-background;
+  }
+
+  pre,
+  .highlight pre {
+    background-color: $markdown-code-block-background;
+    color: $markdown-text-color;
+  }
+
+  pre code,
+  pre tt {
+    background-color: transparent;
+  }
+
+  table th,
+  table td {
+    border-color: $markdown-border-color;
+  }
+
+  table tr {
+    background-color: $markdown-table-row-background;
+    border-top-color: $markdown-muted-border-color;
+  }
+
+  table tr:nth-child(2n) {
+    background-color: $markdown-table-alt-row-background;
+  }
+
+  .footnotes {
+    border-top-color: $markdown-border-color;
+    color: $markdown-muted-text-color;
+  }
+
+  .footnotes li:target {
+    color: $markdown-text-color;
+  }
+
+  .footnotes li:target::before {
+    border-color: $markdown-link-color;
+  }
+
+  // Code uses the theme's code font, like the editor. Highlighted tokens are
+  // spans, which `body *` would otherwise give the UI font.
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: $code-font-family;
+
+    * {
+      font-family: inherit;
+    }
+  }
+}

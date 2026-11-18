@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as *;
 
 .layout-toggle {
   display: flex;
@@ -11,13 +11,15 @@
 
   li {
     background: $toggle-background;
+    color: $toggle-text-color;
     cursor: pointer;
     flex: 1;
     padding: 5px 0;
     text-align: center;
 
     &:hover, &.selected {
-      background: $toggle-background-selected;
+      background: $toggle-selected-background;
+      color: $toggle-selected-text-color;
     }
   }
 }

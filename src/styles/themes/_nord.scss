@@ -1,0 +1,85 @@
+@use 'sass:color';
+@use 'sass:map';
+@use '../webkit-scrollbar-styles' as scrollbar;
+@use 'github';
+
+// Nord: the app's original look, built on the Nord palette
+// (https://www.nordtheme.com). Every theme sets the same keys; see _index.scss.
+
+$nord0: #2e3440;
+$nord1: #3b4252;
+$nord2: #434c5e;
+$nord3: #4c566a;
+$nord4: #d8dee9;
+$nord5: #e5e9f0;
+$nord6: #eceff4;
+$nord7: #8fbcbb;
+$nord8: #88c0d0;
+$nord9: #81a1c1;
+$nord10: #5e81ac;
+$nord11: #bf616a;
+$nord12: #d08770;
+$nord13: #ebcb8b;
+$nord14: #a3be8c;
+$nord15: #b48ead;
+
+$theme: map.merge(
+  (
+    // Fonts. Web fonts also need loading, like the Typekit stylesheet in index.html.
+    'font-family': ('fira-mono', monospace),
+    'code-font-family': ('fira-mono', monospace),
+
+    // Page
+    'text-color': $nord6,
+    'scrollbar-track-color': scrollbar.track-color($nord6),
+    'scrollbar-thumb-color': scrollbar.thumb-color($nord6),
+    // Lines between the sidebar, header, editor and preview: none in Nord.
+    'divider-color': transparent,
+
+    // Buttons
+    'button-background': $nord10,
+    'button-hover-background': color.mix(#000, $nord10, 20%),
+    'button-text-color': $nord6,
+    'secondary-button-background': $nord3,
+    'secondary-button-hover-background': color.adjust($nord3, $lightness: 10%),
+    'secondary-button-text-color': $nord6,
+    'secondary-button-icon-color': #fff,
+    'delete-color': $nord11,
+    'delete-hover-text-color': #fff,
+
+    // Notes list sidebar
+    'sidebar-background': $nord0,
+    'sidebar-scrollbar-track-color': scrollbar.track-color($nord0),
+    'sidebar-scrollbar-thumb-color': scrollbar.thumb-color($nord0),
+    'category-heading-background': color.adjust($nord0, $lightness: -2%),
+    'category-heading-text-color': $nord6,
+    'note-stripe-background': color.adjust($nord0, $lightness: 2%),
+    'selected-note-background': $nord4,
+    'selected-note-text-color': $nord0,
+
+    // Note header
+    'header-background': $nord0,
+    'toggle-background': $nord9,
+    'toggle-text-color': $nord6,
+    'toggle-selected-background': $nord10,
+    'toggle-selected-text-color': $nord6,
+
+    // Editor and preview
+    'editor-background': $nord1,
+    'editor-scrollbar-track-color': scrollbar.track-color($nord1),
+    'editor-scrollbar-thumb-color': scrollbar.thumb-color($nord1),
+    'preview-background': $nord6,
+
+    // Task-list checkboxes
+    'checkbox-background': #fff,
+    'checkbox-border-color': $nord10,
+    'checkbox-check-color': $nord10,
+
+    // Import dialog
+    'import-instructions-background': $nord10,
+    'import-instructions-text-color': $nord6,
+    'import-shadow-color': $nord9,
+  ),
+  // Rendered markdown and code highlighting use GitHub's colors.
+  map.merge(github.$markdown, github.$syntax)
+);

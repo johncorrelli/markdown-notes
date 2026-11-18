@@ -1,27 +1,80 @@
-@import "../../node_modules/nord/src/sass/nord.scss";
+@use 'themes';
 
-$font-family: 'fira-mono', monospace;
 $font-size: 14px;
-$text-color: $nord6;
-$delete-color: $nord11;
 $padding: $font-size;
 
-$background-color-dark: $nord0;
-$background-color-medium: $nord1;
-$background-color-light: $nord6;
-
-$button-background-color: $nord10;
-$button-text-color: $text-color;
-
 $left-width: 250px;
-
-$selected-note-highlight: $nord4;
-$toggle-background: $nord9;
-$toggle-background-selected: $nord10;
-
-$secondary-button-background: $nord3;
-$secondary-button-text-color: $nord6;
-
-$import-left-side-background: $nord10;
-
 $toggle-width: 80px;
+
+// Fonts and colors come from the active theme (see styles/themes) as CSS custom
+// properties, so they can't go through Sass color functions. For a new shade,
+// add a setting to the themes instead.
+$font-family: themes.get('font-family');
+$code-font-family: themes.get('code-font-family');
+
+$text-color: themes.get('text-color');
+$scrollbar-track-color: themes.get('scrollbar-track-color');
+$scrollbar-thumb-color: themes.get('scrollbar-thumb-color');
+$divider-color: themes.get('divider-color');
+
+$button-background: themes.get('button-background');
+$button-hover-background: themes.get('button-hover-background');
+$button-text-color: themes.get('button-text-color');
+$secondary-button-background: themes.get('secondary-button-background');
+$secondary-button-hover-background: themes.get('secondary-button-hover-background');
+$secondary-button-text-color: themes.get('secondary-button-text-color');
+$secondary-button-icon-color: themes.get('secondary-button-icon-color');
+$delete-color: themes.get('delete-color');
+$delete-hover-text-color: themes.get('delete-hover-text-color');
+
+$sidebar-background: themes.get('sidebar-background');
+$sidebar-scrollbar-track-color: themes.get('sidebar-scrollbar-track-color');
+$sidebar-scrollbar-thumb-color: themes.get('sidebar-scrollbar-thumb-color');
+$category-heading-background: themes.get('category-heading-background');
+$category-heading-text-color: themes.get('category-heading-text-color');
+$note-stripe-background: themes.get('note-stripe-background');
+$selected-note-background: themes.get('selected-note-background');
+$selected-note-text-color: themes.get('selected-note-text-color');
+
+$header-background: themes.get('header-background');
+$toggle-background: themes.get('toggle-background');
+$toggle-text-color: themes.get('toggle-text-color');
+$toggle-selected-background: themes.get('toggle-selected-background');
+$toggle-selected-text-color: themes.get('toggle-selected-text-color');
+
+$editor-background: themes.get('editor-background');
+$editor-scrollbar-track-color: themes.get('editor-scrollbar-track-color');
+$editor-scrollbar-thumb-color: themes.get('editor-scrollbar-thumb-color');
+$preview-background: themes.get('preview-background');
+
+$checkbox-background: themes.get('checkbox-background');
+$checkbox-border-color: themes.get('checkbox-border-color');
+$checkbox-check-color: themes.get('checkbox-check-color');
+
+$import-instructions-background: themes.get('import-instructions-background');
+$import-instructions-text-color: themes.get('import-instructions-text-color');
+$import-shadow-color: themes.get('import-shadow-color');
+
+$markdown-text-color: themes.get('markdown-text-color');
+$markdown-muted-text-color: themes.get('markdown-muted-text-color');
+$markdown-link-color: themes.get('markdown-link-color');
+$markdown-border-color: themes.get('markdown-border-color');
+$markdown-muted-border-color: themes.get('markdown-muted-border-color');
+$markdown-code-background: themes.get('markdown-code-background');
+$markdown-code-block-background: themes.get('markdown-code-block-background');
+$markdown-table-row-background: themes.get('markdown-table-row-background');
+$markdown-table-alt-row-background: themes.get('markdown-table-alt-row-background');
+
+$syntax-text-color: themes.get('syntax-text-color');
+$syntax-keyword-color: themes.get('syntax-keyword-color');
+$syntax-title-color: themes.get('syntax-title-color');
+$syntax-constant-color: themes.get('syntax-constant-color');
+$syntax-string-color: themes.get('syntax-string-color');
+$syntax-built-in-color: themes.get('syntax-built-in-color');
+$syntax-comment-color: themes.get('syntax-comment-color');
+$syntax-tag-color: themes.get('syntax-tag-color');
+$syntax-bullet-color: themes.get('syntax-bullet-color');
+$syntax-addition-color: themes.get('syntax-addition-color');
+$syntax-addition-background: themes.get('syntax-addition-background');
+$syntax-deletion-color: themes.get('syntax-deletion-color');
+$syntax-deletion-background: themes.get('syntax-deletion-background');

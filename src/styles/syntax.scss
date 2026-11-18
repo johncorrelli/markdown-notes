@@ -1,0 +1,96 @@
+@use 'variables' as *;
+
+// highlight.js token colors from the theme. The groups (and their order, which
+// the cascade depends on) follow highlight.js's GitHub style,
+// highlight.js/styles/github.css.
+
+.hljs {
+  color: $syntax-text-color;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  color: $syntax-keyword-color;
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  color: $syntax-title-color;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  color: $syntax-constant-color;
+}
+
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  color: $syntax-string-color;
+}
+
+.hljs-built_in,
+.hljs-symbol {
+  color: $syntax-built-in-color;
+}
+
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  color: $syntax-comment-color;
+}
+
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  color: $syntax-tag-color;
+}
+
+.hljs-subst {
+  color: $syntax-text-color;
+}
+
+.hljs-section {
+  color: $syntax-constant-color;
+  font-weight: bold;
+}
+
+.hljs-bullet {
+  color: $syntax-bullet-color;
+}
+
+.hljs-emphasis {
+  color: $syntax-text-color;
+  font-style: italic;
+}
+
+.hljs-strong {
+  color: $syntax-text-color;
+  font-weight: bold;
+}
+
+.hljs-addition {
+  background-color: $syntax-addition-background;
+  color: $syntax-addition-color;
+}
+
+.hljs-deletion {
+  background-color: $syntax-deletion-background;
+  color: $syntax-deletion-color;
+}
