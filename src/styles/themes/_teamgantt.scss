@@ -5,8 +5,9 @@
 
 // TeamGantt: a dark theme in TeamGantt's moss greens, from the dark-mode
 // ("theme-dark") design tokens in app.teamgantt.com's stylesheet. Like Nord,
-// the preview stays light so rendered notes read like a page. Every theme sets
-// the same keys; see _index.scss.
+// the preview stays light so rendered notes read like a page; it uses the
+// Sandstone background from www.teamgantt.com. Every theme sets the same keys;
+// see _index.scss.
 
 $moss-300: #9bada5; // the app's primary color in dark mode
 $moss-500: #3f6152; // its primary color in light mode
@@ -27,6 +28,10 @@ $neutral-900: #23211e;
 $red-300: #e0937b; // dark mode's danger color
 $white: #fff;
 
+$sandstone: #f8f6f0; // www.teamgantt.com's page background
+// A step darker than Sandstone, for code blocks and table stripes on it.
+$sandstone-shade: color.mix($neutral-200, $sandstone, 50%);
+
 $theme: map.merge(
   (
     // Fonts. Web fonts also need loading, like the Typekit stylesheet in index.html.
@@ -35,8 +40,8 @@ $theme: map.merge(
 
     // Page
     'text-color': $neutral-100,
-    'scrollbar-track-color': scrollbar.track-color($white),
-    'scrollbar-thumb-color': scrollbar.thumb-color($white),
+    'scrollbar-track-color': scrollbar.track-color($sandstone),
+    'scrollbar-thumb-color': scrollbar.thumb-color($sandstone),
     // Lines between the sidebar, header, editor and preview.
     'divider-color': $moss-800,
 
@@ -68,11 +73,11 @@ $theme: map.merge(
     'toggle-selected-background': $moss-500,
     'toggle-selected-text-color': $neutral-50,
 
-    // Editor (moss) and preview (white, like a page)
+    // Editor (moss) and preview (Sandstone, like a page)
     'editor-background': $moss-900,
     'editor-scrollbar-track-color': scrollbar.track-color($moss-900),
     'editor-scrollbar-thumb-color': scrollbar.thumb-color($moss-900),
-    'preview-background': $white,
+    'preview-background': $sandstone,
 
     // Task-list checkboxes
     'checkbox-background': $white,
@@ -84,16 +89,16 @@ $theme: map.merge(
     'import-instructions-text-color': $neutral-50,
     'import-shadow-color': color.change(#000, $alpha: 0.5),
 
-    // Rendered markdown, on the white preview
+    // Rendered markdown, on the Sandstone preview
     'markdown-text-color': $neutral-900,
     'markdown-muted-text-color': $neutral-500,
     'markdown-link-color': $moss-500,
     'markdown-border-color': $neutral-300,
     'markdown-muted-border-color': $neutral-200,
     'markdown-code-background': color.change($neutral-800, $alpha: 0.08),
-    'markdown-code-block-background': $neutral-100,
+    'markdown-code-block-background': $sandstone-shade,
     'markdown-table-row-background': $white,
-    'markdown-table-alt-row-background': $neutral-100,
+    'markdown-table-alt-row-background': $sandstone-shade,
   ),
   // Code highlighting uses GitHub's colors, like every theme.
   github.$syntax
